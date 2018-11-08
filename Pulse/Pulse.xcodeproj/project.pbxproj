@@ -111,6 +111,9 @@
 		AF36FA3A2194ED020094E3CC /* Pulse */ = {
 			isa = PBXGroup;
 			children = (
+				AF36FA5F2194F5680094E3CC /* controllers */,
+				AF36FA5E2194F5630094E3CC /* views */,
+				AF36FA5D2194F55A0094E3CC /* models */,
 				AF36FA3B2194ED020094E3CC /* AppDelegate.swift */,
 				AF36FA3D2194ED020094E3CC /* ViewController.swift */,
 				AF36FA3F2194ED020094E3CC /* Main.storyboard */,
@@ -129,6 +132,27 @@
 				AF36FA522194ED050094E3CC /* Info.plist */,
 			);
 			path = PulseTests;
+			sourceTree = "<group>";
+		};
+		AF36FA5D2194F55A0094E3CC /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		AF36FA5E2194F5630094E3CC /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		AF36FA5F2194F5680094E3CC /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
