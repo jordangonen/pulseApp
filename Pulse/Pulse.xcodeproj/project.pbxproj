@@ -15,6 +15,10 @@
 		AF36FA462194ED050094E3CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF36FA442194ED050094E3CC /* LaunchScreen.storyboard */; };
 		AF36FA512194ED050094E3CC /* PulseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36FA502194ED050094E3CC /* PulseTests.swift */; };
 		AF36FA5C2194ED6E0094E3CC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF36FA5B2194ED6E0094E3CC /* GoogleService-Info.plist */; };
+		AF36FA612194F6E10094E3CC /* AuthNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36FA602194F6E10094E3CC /* AuthNavigationController.swift */; };
+		AF36FA642194FACD0094E3CC /* color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36FA632194FACD0094E3CC /* color.swift */; };
+		AF36FA662194FD440094E3CC /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36FA652194FD440094E3CC /* SignUpController.swift */; };
+		AF36FA682194FD5C0094E3CC /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36FA672194FD5C0094E3CC /* LogInController.swift */; };
 		BC65C1603A39D3CB2E288583 /* Pods_PulseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764C8EFA1511882B38D6562E /* Pods_PulseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +50,10 @@
 		AF36FA502194ED050094E3CC /* PulseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseTests.swift; sourceTree = "<group>"; };
 		AF36FA522194ED050094E3CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF36FA5B2194ED6E0094E3CC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AF36FA602194F6E10094E3CC /* AuthNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationController.swift; sourceTree = "<group>"; };
+		AF36FA632194FACD0094E3CC /* color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = color.swift; sourceTree = "<group>"; };
+		AF36FA652194FD440094E3CC /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		AF36FA672194FD5C0094E3CC /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +119,7 @@
 		AF36FA3A2194ED020094E3CC /* Pulse */ = {
 			isa = PBXGroup;
 			children = (
+				AF36FA622194FA630094E3CC /* extensions */,
 				AF36FA5F2194F5680094E3CC /* controllers */,
 				AF36FA5E2194F5630094E3CC /* views */,
 				AF36FA5D2194F55A0094E3CC /* models */,
@@ -151,8 +160,19 @@
 		AF36FA5F2194F5680094E3CC /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AF36FA602194F6E10094E3CC /* AuthNavigationController.swift */,
+				AF36FA652194FD440094E3CC /* SignUpController.swift */,
+				AF36FA672194FD5C0094E3CC /* LogInController.swift */,
 			);
 			path = controllers;
+			sourceTree = "<group>";
+		};
+		AF36FA622194FA630094E3CC /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AF36FA632194FACD0094E3CC /* color.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +339,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF36FA662194FD440094E3CC /* SignUpController.swift in Sources */,
+				AF36FA682194FD5C0094E3CC /* LogInController.swift in Sources */,
+				AF36FA612194F6E10094E3CC /* AuthNavigationController.swift in Sources */,
+				AF36FA642194FACD0094E3CC /* color.swift in Sources */,
 				AF36FA3E2194ED020094E3CC /* ViewController.swift in Sources */,
 				AF36FA3C2194ED020094E3CC /* AppDelegate.swift in Sources */,
 			);
