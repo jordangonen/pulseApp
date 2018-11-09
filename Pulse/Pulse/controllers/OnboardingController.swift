@@ -26,10 +26,9 @@ class OnboardingController: UIViewController {
     }
     
     func setupScrollView() {
-        obScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        obScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
+        obScrollView.contentSize.width = view.frame.width * CGFloat(slides.count)
         for i in 0 ..< slides.count {
-            slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height)
+            slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: -20, width: view.frame.width, height: view.frame.height)
             obScrollView.addSubview(slides[i])
         }
     }

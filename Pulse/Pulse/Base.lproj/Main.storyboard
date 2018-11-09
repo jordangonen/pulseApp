@@ -371,7 +371,7 @@
         <!--Onboarding Controller-->
         <scene sceneID="peV-6t-30P">
             <objects>
-                <viewController storyboardIdentifier="onboardingJawn" id="g8m-aN-Uui" customClass="OnboardingController" customModule="Pulse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="onboardingJawn" autoresizesArchivedViewToFullSize="NO" id="g8m-aN-Uui" customClass="OnboardingController" customModule="Pulse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gOd-C3-Jlb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -380,20 +380,21 @@
                                 <rect key="frame" x="168" y="530" width="39" height="37"/>
                             </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0Z-gi-S9s">
-                                <rect key="frame" x="0.0" y="10" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="F0Z-gi-S9s" firstAttribute="leading" secondItem="rav-kj-stt" secondAttribute="leading" id="1AN-V1-eK6"/>
                             <constraint firstItem="rav-kj-stt" firstAttribute="bottom" secondItem="NpW-Du-jKs" secondAttribute="bottom" constant="100" id="4qK-Fj-Z50"/>
-                            <constraint firstItem="F0Z-gi-S9s" firstAttribute="centerX" secondItem="rav-kj-stt" secondAttribute="centerX" id="J01-W5-LRX"/>
-                            <constraint firstItem="F0Z-gi-S9s" firstAttribute="height" secondItem="gOd-C3-Jlb" secondAttribute="height" id="M5H-s6-tva"/>
-                            <constraint firstItem="F0Z-gi-S9s" firstAttribute="width" secondItem="gOd-C3-Jlb" secondAttribute="width" id="SLb-nA-fUx"/>
+                            <constraint firstItem="rav-kj-stt" firstAttribute="top" secondItem="F0Z-gi-S9s" secondAttribute="top" constant="20" id="AIR-fJ-8jP"/>
+                            <constraint firstItem="rav-kj-stt" firstAttribute="trailing" secondItem="F0Z-gi-S9s" secondAttribute="trailing" id="Dcr-Nb-tW2"/>
+                            <constraint firstItem="rav-kj-stt" firstAttribute="bottom" secondItem="F0Z-gi-S9s" secondAttribute="bottom" id="Q6d-QF-ws2"/>
                             <constraint firstItem="NpW-Du-jKs" firstAttribute="centerX" secondItem="rav-kj-stt" secondAttribute="centerX" id="cUl-Gw-tdZ"/>
-                            <constraint firstItem="F0Z-gi-S9s" firstAttribute="centerY" secondItem="rav-kj-stt" secondAttribute="centerY" id="tLt-yK-nfx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rav-kj-stt"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="obScrollView" destination="F0Z-gi-S9s" id="2IA-HB-rE6"/>
                         <outlet property="pageControl" destination="NpW-Du-jKs" id="TIL-Tq-ar9"/>
