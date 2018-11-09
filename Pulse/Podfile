@@ -7,6 +7,7 @@ target 'Pulse' do
 
   # Pods for Pulse
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
 
   target 'PulseTests' do
     inherit! :search_paths
