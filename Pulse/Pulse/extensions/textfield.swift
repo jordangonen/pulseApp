@@ -10,25 +10,24 @@ import Foundation
 import UIKit
 
 extension UITextField {
+    
+    func validateName() -> Bool {
+        return self.formatBorder(self.text != nil)
+    }
+    
     func validateEmail() -> Bool {
         guard let input = self.text else { return false }
-        if (input.matches("[\\S]+@[\\S]+\\.[\\S]")) {
-            self.layer.borderColor = UIColor.green.cgColor
-            return true
-        } else {
-            self.layer.borderColor = UIColor.red.cgColor
-            return false
-        }
+        return self.formatBorder((input.matches("[\\S]+@[\\S]+\\.[\\S]")))
     }
     
     func validatePassword() -> Bool {
         guard let input = self.text else { return false }
-        if (input.count > 7) {
-            self.layer.borderColor = UIColor.green.cgColor
-            return true
-        } else {
-            self.layer.borderColor = UIColor.red.cgColor
-            return false
-        }
+        return self.formatBorder(input.count > 7)
     }
+    
+    func formatBorder(_ good: Bool) -> Bool {
+        self.layer.borderColor = good ? UIColor.Pulse.green.cgColor : UIColor.Pulse.red.cgColor
+        return good
+    }
+    
 }

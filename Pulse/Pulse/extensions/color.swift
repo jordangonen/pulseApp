@@ -13,6 +13,7 @@ extension UIColor {
     
     struct Pulse {
         static var green : UIColor { return UIColor(rgb: 0x38D39F) }
+        static var lightGreen : UIColor { return UIColor(rgb: 0x13F191) }
         static var red : UIColor { return UIColor(rgb: 0xEB5757) }
     }
     

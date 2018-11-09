@@ -8,6 +8,8 @@ target 'Pulse' do
   # Pods for Pulse
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'IQKeyboardManagerSwift'
 
   target 'PulseTests' do
     inherit! :search_paths

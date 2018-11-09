@@ -20,6 +20,10 @@
 		AF36FA682194FD5C0094E3CC /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36FA672194FD5C0094E3CC /* LogInController.swift */; };
 		AF36FA6A219506D90094E3CC /* textfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36FA69219506D90094E3CC /* textfield.swift */; };
 		AF36FA6C2195089A0094E3CC /* string.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36FA6B2195089A0094E3CC /* string.swift */; };
+		AF3CD4B42195F38200A00EDA /* LandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CD4B32195F38200A00EDA /* LandingController.swift */; };
+		AF3CD4B62196000700A00EDA /* OnboardingTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3CD4B52196000700A00EDA /* OnboardingTest.storyboard */; };
+		AF3CD4B82196057800A00EDA /* OnboardingProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CD4B72196057800A00EDA /* OnboardingProfileController.swift */; };
+		AF3CD4BE2196176E00A00EDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CD4BD2196176E00A00EDA /* User.swift */; };
 		AF4D572221952281005D5F38 /* uiview.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D572121952281005D5F38 /* uiview.swift */; };
 		AF4D572421952544005D5F38 /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D572321952544005D5F38 /* LoadingAnimation.swift */; };
 		AF4D572C219542BF005D5F38 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D572B219542BF005D5F38 /* OnboardingController.swift */; };
@@ -61,6 +65,10 @@
 		AF36FA672194FD5C0094E3CC /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
 		AF36FA69219506D90094E3CC /* textfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textfield.swift; sourceTree = "<group>"; };
 		AF36FA6B2195089A0094E3CC /* string.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = string.swift; sourceTree = "<group>"; };
+		AF3CD4B32195F38200A00EDA /* LandingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingController.swift; sourceTree = "<group>"; };
+		AF3CD4B52196000700A00EDA /* OnboardingTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingTest.storyboard; sourceTree = "<group>"; };
+		AF3CD4B72196057800A00EDA /* OnboardingProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingProfileController.swift; sourceTree = "<group>"; };
+		AF3CD4BD2196176E00A00EDA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AF4D572121952281005D5F38 /* uiview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uiview.swift; sourceTree = "<group>"; };
 		AF4D572321952544005D5F38 /* LoadingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
 		AF4D572B219542BF005D5F38 /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
@@ -137,6 +145,7 @@
 				AF36FA5D2194F55A0094E3CC /* models */,
 				AF36FA3B2194ED020094E3CC /* AppDelegate.swift */,
 				AF36FA3F2194ED020094E3CC /* Main.storyboard */,
+				AF3CD4B52196000700A00EDA /* OnboardingTest.storyboard */,
 				AF36FA422194ED050094E3CC /* Assets.xcassets */,
 				AF36FA442194ED050094E3CC /* LaunchScreen.storyboard */,
 				AF36FA472194ED050094E3CC /* Info.plist */,
@@ -157,6 +166,7 @@
 		AF36FA5D2194F55A0094E3CC /* models */ = {
 			isa = PBXGroup;
 			children = (
+				AF3CD4BD2196176E00A00EDA /* User.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -177,7 +187,9 @@
 				AF36FA602194F6E10094E3CC /* AuthNavigationController.swift */,
 				AF4D572B219542BF005D5F38 /* OnboardingController.swift */,
 				AF36FA652194FD440094E3CC /* SignUpController.swift */,
+				AF3CD4B72196057800A00EDA /* OnboardingProfileController.swift */,
 				AF36FA672194FD5C0094E3CC /* LogInController.swift */,
+				AF3CD4B32195F38200A00EDA /* LandingController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -278,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF36FA462194ED050094E3CC /* LaunchScreen.storyboard in Resources */,
+				AF3CD4B62196000700A00EDA /* OnboardingTest.storyboard in Resources */,
 				AF4D572E2195464D005D5F38 /* OnboardingPage.xib in Resources */,
 				AF36FA5C2194ED6E0094E3CC /* GoogleService-Info.plist in Resources */,
 				AF36FA432194ED050094E3CC /* Assets.xcassets in Resources */,
@@ -320,14 +333,32 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Pulse/Pods-Pulse-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,10 +391,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF3CD4B82196057800A00EDA /* OnboardingProfileController.swift in Sources */,
 				AF36FA662194FD440094E3CC /* SignUpController.swift in Sources */,
 				AF36FA682194FD5C0094E3CC /* LogInController.swift in Sources */,
 				AF4D572221952281005D5F38 /* uiview.swift in Sources */,
+				AF3CD4B42195F38200A00EDA /* LandingController.swift in Sources */,
 				AF36FA612194F6E10094E3CC /* AuthNavigationController.swift in Sources */,
+				AF3CD4BE2196176E00A00EDA /* User.swift in Sources */,
 				AF36FA642194FACD0094E3CC /* color.swift in Sources */,
 				AF36FA3C2194ED020094E3CC /* AppDelegate.swift in Sources */,
 				AF4D572421952544005D5F38 /* LoadingAnimation.swift in Sources */,

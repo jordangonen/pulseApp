@@ -61,7 +61,7 @@ class OnboardingController: UIViewController, UIScrollViewDelegate {
         let slide3 = Bundle.main.loadNibNamed("OnboardingPage", owner: self, options: nil)?.first as! OnboardingSlide
         slide3.image.image = UIImage(named: "balloons")
         slide3.title.text = "Track Your Mood"
-        slide3.subtitle.text = "You're all set! Click \"finish\" to begin your journey into the quantified self"
+        slide3.subtitle.text = "That's pretty much it! Click \"finish\" to create your profile and get started"
         
         return [slide0, slide1, slide2, slide3]
     }
@@ -90,6 +90,10 @@ class OnboardingController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func nextAction(_ sender: Any) {
+        if nextOutlet.title(for: .normal) == "finish >" {
+            let c = UIStoryboard(name: "OnboardingTest", bundle: nil).instantiateViewController(withIdentifier: "profile")
+            navigationController?.pushViewController(c, animated: true)
+        }
         let pageIndex = Int(ceil(obScrollView.contentOffset.x/view.frame.width))
         if pageIndex < slides.count - 1 {
             let newOffset = view.frame.width * CGFloat(pageIndex + 1)

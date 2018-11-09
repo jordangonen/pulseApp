@@ -22,11 +22,40 @@ extension UIView {
         loadingView.addSubview(loadingAnimation)
         UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse], animations: {
             loadingAnimation.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            loadingAnimation.backgroundColor = UIColor.Pulse.lightGreen
         })
         self.addSubview(loadingView)
     }
     
     func screenLoaded() {
         self.viewWithTag(69)?.removeFromSuperview()
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
+    }
+    
+    @IBInspectable var borderColor: UIColor? {
+        get {
+            return UIColor(cgColor: layer.borderColor!)
+        }
+        set {
+            layer.borderColor = newValue?.cgColor
+        }
     }
 }

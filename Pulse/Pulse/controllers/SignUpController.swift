@@ -37,16 +37,28 @@ class SignUpController: UIViewController {
         let _ = confirmOutlet.validatePassword()
     }
     
+    @IBAction func emailNext(_ sender: Any) {
+        passwordOutlet.becomeFirstResponder()
+    }
+    
+    @IBAction func passwordNext(_ sender: Any) {
+        confirmOutlet.becomeFirstResponder()
+    }
+    
+    
     @IBAction func confirmWithReturn(_ sender: Any) {
+        confirmOutlet.resignFirstResponder()
         submitSignup(self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         // debugging
-        let hah = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "onboardingJawn")
+        let hah = UIStoryboard(name: "OnboardingTest", bundle: nil).instantiateViewController(withIdentifier: "onboardingJawn")
         self.navigationController?.pushViewController(hah, animated: true)
-        // end debugging
+        // debugging
         emailOutlet.layer.borderWidth = 1.0
         passwordOutlet.layer.borderWidth = 1.0
         confirmOutlet.layer.borderWidth = 1.0
@@ -57,11 +69,15 @@ class SignUpController: UIViewController {
         if validateAll() {
             self.view.screenLoading()
             Auth.auth().createUser(withEmail: (emailOutlet.text?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines))!, password: passwordOutlet.text!) { (authResult, error) in
-                print("\nresult: \(String(describing: authResult))")
-                print("\nerror:\(String(describing: error))")
                 self.view.screenLoaded()
-                let hah = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "onboardingJawn")
-                self.navigationController?.pushViewController(hah, animated: true)
+                if error != nil {
+                    let alert = UIAlertController(title: "Uh-oh!", message: "There's already a Pulse account using that email address", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                } else {
+                    let hah = UIStoryboard(name: "OnboardingTest", bundle: nil).instantiateViewController(withIdentifier: "onboardingJawn")
+                    self.navigationController?.pushViewController(hah, animated: true)
+                }
             }
         }
     }
