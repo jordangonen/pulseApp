@@ -17,6 +17,9 @@ class OnboardingController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var obScrollView: UIScrollView!
     @IBOutlet var pageControl: UIPageControl!
     
+    @IBOutlet var prevOutlet: UIButton!
+    @IBOutlet var nextOutlet: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         obScrollView.delegate = self
@@ -58,15 +61,39 @@ class OnboardingController: UIViewController, UIScrollViewDelegate {
         let slide3 = Bundle.main.loadNibNamed("OnboardingPage", owner: self, options: nil)?.first as! OnboardingSlide
         slide3.image.image = UIImage(named: "balloons")
         slide3.title.text = "Track Your Mood"
-        slide3.subtitle.text = "You're all set! Click \"Finish\" to begin your journey into the quantified self"
+        slide3.subtitle.text = "You're all set! Click \"finish\" to begin your journey into the quantified self"
         
         return [slide0, slide1, slide2, slide3]
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = Int(round(obScrollView.contentOffset.x/view.frame.width))
+        updateButtons(i: pageIndex)
         pageControl.currentPage = pageIndex
         pageControl.currentPageIndicatorTintColor = colors[pageIndex]
         pageControl.pageIndicatorTintColor = colors[pageIndex].withAlphaComponent(0.3)
+    }
+    
+    func updateButtons(i: Int) {
+        prevOutlet.setTitleColor(colors[i], for: .normal)
+        nextOutlet.setTitleColor(colors[i], for: .normal)
+        prevOutlet.setTitle(i == 0 ? "" : "< prev", for: .normal)
+        nextOutlet.setTitle(i == slides.count - 1 ? "finish >" : "next >", for: .normal)
+    }
+    
+    @IBAction func prevAction(_ sender: Any) {
+        let pageIndex = Int(floor(obScrollView.contentOffset.x/view.frame.width))
+        if pageIndex > 0 {
+            let newOffset = view.frame.width * CGFloat(pageIndex - 1)
+            obScrollView.setContentOffset(CGPoint(x: newOffset, y: -20), animated: true)
+        }
+    }
+    
+    @IBAction func nextAction(_ sender: Any) {
+        let pageIndex = Int(ceil(obScrollView.contentOffset.x/view.frame.width))
+        if pageIndex < slides.count - 1 {
+            let newOffset = view.frame.width * CGFloat(pageIndex + 1)
+            obScrollView.setContentOffset(CGPoint(x: newOffset, y: -20), animated: true)
+        }
     }
 }

@@ -385,10 +385,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7G-eq-WfD" userLabel="prevButton">
                                 <rect key="frame" x="40" y="597" width="44" height="30"/>
                                 <state key="normal" title="&lt; prev"/>
+                                <connections>
+                                    <action selector="prevAction:" destination="g8m-aN-Uui" eventType="touchUpInside" id="Ky0-lQ-EmE"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHG-Hg-r12" userLabel="nextButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHG-Hg-r12" userLabel="nextButton">
                                 <rect key="frame" x="292" y="597" width="43" height="30"/>
                                 <state key="normal" title="next &gt;"/>
+                                <connections>
+                                    <action selector="nextAction:" destination="g8m-aN-Uui" eventType="touchUpInside" id="ooR-Ew-cdM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -403,13 +409,16 @@
                             <constraint firstItem="rav-kj-stt" firstAttribute="trailing" secondItem="tHG-Hg-r12" secondAttribute="trailing" constant="40" id="SkI-Qs-0OY"/>
                             <constraint firstItem="NpW-Du-jKs" firstAttribute="centerX" secondItem="rav-kj-stt" secondAttribute="centerX" id="cUl-Gw-tdZ"/>
                             <constraint firstItem="rav-kj-stt" firstAttribute="bottom" secondItem="v7G-eq-WfD" secondAttribute="bottom" constant="40" id="oRx-gg-k7L"/>
+                            <constraint firstItem="tHG-Hg-r12" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v7G-eq-WfD" secondAttribute="trailing" constant="8" symbolic="YES" id="yBv-xR-FhK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rav-kj-stt"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="nextOutlet" destination="tHG-Hg-r12" id="mzI-h0-bzC"/>
                         <outlet property="obScrollView" destination="F0Z-gi-S9s" id="2IA-HB-rE6"/>
                         <outlet property="pageControl" destination="NpW-Du-jKs" id="TIL-Tq-ar9"/>
+                        <outlet property="prevOutlet" destination="v7G-eq-WfD" id="x1x-GW-Qlg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RCt-Q7-8lP" userLabel="First Responder" sceneMemberID="firstResponder"/>
