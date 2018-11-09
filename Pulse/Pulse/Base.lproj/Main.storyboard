@@ -376,21 +376,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="NpW-Du-jKs">
-                                <rect key="frame" x="168" y="530" width="39" height="37"/>
-                            </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0Z-gi-S9s">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </scrollView>
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="NpW-Du-jKs">
+                                <rect key="frame" x="168" y="530" width="39" height="37"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7G-eq-WfD" userLabel="prevButton">
+                                <rect key="frame" x="40" y="597" width="44" height="30"/>
+                                <state key="normal" title="&lt; prev"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHG-Hg-r12" userLabel="nextButton">
+                                <rect key="frame" x="292" y="597" width="43" height="30"/>
+                                <state key="normal" title="next &gt;"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="F0Z-gi-S9s" firstAttribute="leading" secondItem="rav-kj-stt" secondAttribute="leading" id="1AN-V1-eK6"/>
                             <constraint firstItem="rav-kj-stt" firstAttribute="bottom" secondItem="NpW-Du-jKs" secondAttribute="bottom" constant="100" id="4qK-Fj-Z50"/>
+                            <constraint firstItem="v7G-eq-WfD" firstAttribute="leading" secondItem="rav-kj-stt" secondAttribute="leading" constant="40" id="7Cg-2o-cjF"/>
                             <constraint firstItem="rav-kj-stt" firstAttribute="top" secondItem="F0Z-gi-S9s" secondAttribute="top" constant="20" id="AIR-fJ-8jP"/>
                             <constraint firstItem="rav-kj-stt" firstAttribute="trailing" secondItem="F0Z-gi-S9s" secondAttribute="trailing" id="Dcr-Nb-tW2"/>
+                            <constraint firstItem="rav-kj-stt" firstAttribute="bottom" secondItem="tHG-Hg-r12" secondAttribute="bottom" constant="40" id="Fno-be-Cy6"/>
                             <constraint firstItem="rav-kj-stt" firstAttribute="bottom" secondItem="F0Z-gi-S9s" secondAttribute="bottom" id="Q6d-QF-ws2"/>
+                            <constraint firstItem="rav-kj-stt" firstAttribute="trailing" secondItem="tHG-Hg-r12" secondAttribute="trailing" constant="40" id="SkI-Qs-0OY"/>
                             <constraint firstItem="NpW-Du-jKs" firstAttribute="centerX" secondItem="rav-kj-stt" secondAttribute="centerX" id="cUl-Gw-tdZ"/>
+                            <constraint firstItem="rav-kj-stt" firstAttribute="bottom" secondItem="v7G-eq-WfD" secondAttribute="bottom" constant="40" id="oRx-gg-k7L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rav-kj-stt"/>
                     </view>

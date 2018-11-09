@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xBu-bH-D3F" userLabel="slideImage">
-                    <rect key="frame" x="0.0" y="100" width="375" height="250"/>
+                    <rect key="frame" x="20" y="100" width="335" height="250"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="250" id="zHa-Nj-9HT"/>
                     </constraints>
@@ -34,13 +34,13 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.21960784310000001" green="0.82745098039999998" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="xBu-bH-D3F" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="21j-Xd-3T7"/>
+                <constraint firstItem="xBu-bH-D3F" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="21j-Xd-3T7"/>
                 <constraint firstItem="Dht-EZ-XjZ" firstAttribute="top" secondItem="KIS-dO-VJA" secondAttribute="bottom" constant="20" id="6Ez-Px-rEZ"/>
                 <constraint firstItem="KIS-dO-VJA" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Ci0-tO-92t"/>
                 <constraint firstItem="Dht-EZ-XjZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="EwP-5M-vQE"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xBu-bH-D3F" secondAttribute="trailing" id="Gy0-aR-mZ7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xBu-bH-D3F" secondAttribute="trailing" constant="20" id="Gy0-aR-mZ7"/>
                 <constraint firstItem="xBu-bH-D3F" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="80" id="bK7-ze-7bK"/>
                 <constraint firstItem="KIS-dO-VJA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="fC3-iE-F5S"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KIS-dO-VJA" secondAttribute="trailing" constant="20" id="hJF-JS-QWI"/>

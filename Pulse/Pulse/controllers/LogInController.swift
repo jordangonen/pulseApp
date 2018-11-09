@@ -26,7 +26,7 @@ class LogInController: UIViewController {
         if !(emailOutlet.validateEmail() || passwordOutlet.validatePassword()) { return }
         self.view.screenLoading()
         Auth.auth().signIn(withEmail: emailOutlet.text!, password: passwordOutlet.text!) { (authResult, error) in
-            print("\n\(authResult?.user)")
+            print("\n\(String(describing: authResult?.user))")
             self.view.screenLoaded()
         }
     }

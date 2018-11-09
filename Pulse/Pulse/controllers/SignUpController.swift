@@ -43,6 +43,10 @@ class SignUpController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // debugging
+        let hah = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "onboardingJawn")
+        self.navigationController?.pushViewController(hah, animated: true)
+        // end debugging
         emailOutlet.layer.borderWidth = 1.0
         passwordOutlet.layer.borderWidth = 1.0
         confirmOutlet.layer.borderWidth = 1.0
@@ -53,8 +57,8 @@ class SignUpController: UIViewController {
         if validateAll() {
             self.view.screenLoading()
             Auth.auth().createUser(withEmail: (emailOutlet.text?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines))!, password: passwordOutlet.text!) { (authResult, error) in
-                print("\nresult: \(authResult)")
-                print("\nerror:\(error)")
+                print("\nresult: \(String(describing: authResult))")
+                print("\nerror:\(String(describing: error))")
                 self.view.screenLoaded()
                 let hah = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "onboardingJawn")
                 self.navigationController?.pushViewController(hah, animated: true)
