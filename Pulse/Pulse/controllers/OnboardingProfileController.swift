@@ -37,16 +37,17 @@ class OnboardingProfileController: UIViewController {
     @IBAction func addInfoAction(_ sender: Any) {
         if (firstNameOutlet.validateName() && lastNameOutlet.validateName()) {
             self.view.screenLoading()
-            db.collection("users").document((Auth.auth().currentUser?.uid)!).setData(["firstName": firstNameOutlet.text!, "lastName": lastNameOutlet.text!]) { error in
-                if error != nil {
-                    // push to main
+            db.collection("users").document((Auth.auth().currentUser?.uid)!).setData(["firstName": firstNameOutlet.text!.trimmingCharacters(in: .whitespacesAndNewlines), "lastName": lastNameOutlet.text!.trimmingCharacters(in: .whitespacesAndNewlines)]) { error in
+                self.view.screenLoaded()
+                if error == nil {
+                    self.dismiss(animated: true, completion: nil)
                 } else {
                     let alert = UIAlertController(title: "Uh-oh!", message: "Something went wrong", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: {_ in self.addInfoAction(self) }))
                     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    self.present(alert, animated: true)
                 }
             }
-            self.view.screenLoaded()
         }
     }
 }

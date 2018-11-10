@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import FirebaseAuth
+import Firebase
 
 class LogInController: UIViewController {
     
@@ -33,7 +33,34 @@ class LogInController: UIViewController {
     @IBAction func loginButton(_ sender: Any) {
         self.view.screenLoading()
         Auth.auth().signIn(withEmail: emailOutlet.text!, password: passwordOutlet.text!) { (authResult, error) in
-            print("\n\(String(describing: authResult?.user))")
+            if authResult != nil {
+                User.getNamesFromID((authResult?.user.uid)!) { _ in
+                    self.view.screenLoaded()
+                    let v = UINavigationController(rootViewController: UIStoryboard(name: "LoggedIn", bundle: nil).instantiateViewController(withIdentifier: "loggedIn"))
+                    v.setNavigationBarHidden(true, animated: false)
+                    UIView.transition(with: ((UIApplication.shared.delegate?.window)!)!, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+                        UIApplication.shared.delegate?.window!?.rootViewController = v
+                    }, completion: nil)
+                }
+            } else if error != nil {
+                self.view.screenLoaded()
+                let alert = UIAlertController(title: "Uh-oh!", message: "Something went wrong", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: "Reload", style: .default, handler: { UIAlertAction in self.loginButton(self) }))
+                if let e = AuthErrorCode(rawValue: error!._code) {
+                    switch e {
+                    case .wrongPassword:
+                        alert.message = "Login failed (password)"
+                        break
+                    case .invalidEmail:
+                        alert.message = "That email address doesn't look quite right"
+                        break
+                    default:
+                        break
+                    }
+                }
+                self.present(alert, animated: true)
+            }
             self.view.screenLoaded()
         }
     }

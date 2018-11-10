@@ -12,7 +12,7 @@ import UIKit
 extension UITextField {
     
     func validateName() -> Bool {
-        return self.formatBorder(self.text != nil)
+        return self.formatBorder(self.text!.trimmingCharacters(in: .whitespacesAndNewlines) != "")
     }
     
     func validateEmail() -> Bool {

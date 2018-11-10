@@ -33,13 +33,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pulse" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edz-cg-huS" userLabel="getStartedTitle">
-                                <rect key="frame" x="20" y="180" width="335" height="39"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="32"/>
+                                <rect key="frame" x="20" y="180" width="335" height="50.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="42"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUw-uq-BMc" userLabel="loginButton">
-                                <rect key="frame" x="135" y="279" width="105" height="34"/>
+                                <rect key="frame" x="135" y="290.5" width="105" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="105" id="LZo-ky-G26"/>
@@ -60,7 +60,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJ4-sc-WlG" userLabel="signupButton">
-                                <rect key="frame" x="135" y="343" width="105" height="34"/>
+                                <rect key="frame" x="135" y="354.5" width="105" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="105" id="1nJ-qp-fdz"/>
                                 </constraints>

@@ -55,10 +55,6 @@ class SignUpController: UIViewController {
         super.viewDidLoad()
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
-        // debugging
-        let hah = UIStoryboard(name: "OnboardingTest", bundle: nil).instantiateViewController(withIdentifier: "onboardingJawn")
-        self.navigationController?.pushViewController(hah, animated: true)
-        // debugging
         emailOutlet.layer.borderWidth = 1.0
         passwordOutlet.layer.borderWidth = 1.0
         confirmOutlet.layer.borderWidth = 1.0

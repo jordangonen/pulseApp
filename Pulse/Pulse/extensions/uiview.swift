@@ -13,7 +13,11 @@ extension UIView {
     func screenLoading() {
         let loadingView = UIView(frame: self.frame)
         loadingView.tag = 69
-        loadingView.backgroundColor = UIColor(white: 0.2, alpha: 0.2)
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = loadingView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        loadingView.addSubview(blurEffectView)
         let loadingAnimation = UIView()
         loadingAnimation.frame.size = CGSize(width: 100, height: 100)
         loadingAnimation.layer.cornerRadius = 50
@@ -25,6 +29,7 @@ extension UIView {
             loadingAnimation.backgroundColor = UIColor.Pulse.lightGreen
         })
         self.addSubview(loadingView)
+        self.bringSubviewToFront(loadingView)
     }
     
     func screenLoaded() {
