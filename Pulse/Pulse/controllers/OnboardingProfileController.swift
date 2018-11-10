@@ -12,8 +12,6 @@ import Firebase
 
 class OnboardingProfileController: UIViewController {
     
-    let db = Firestore.firestore()
-    
     @IBOutlet var firstNameOutlet: UITextField!
     
     @IBOutlet var lastNameOutlet: UITextField!
@@ -29,13 +27,12 @@ class OnboardingProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let settings = db.settings
-        settings.areTimestampsInSnapshotsEnabled = true
-        db.settings = settings
     }
     
     @IBAction func addInfoAction(_ sender: Any) {
-        if (firstNameOutlet.validateName() && lastNameOutlet.validateName()) {
+        let ayo = firstNameOutlet.validateName()
+        let lmaoo = lastNameOutlet.validateName()
+        if (ayo && lmaoo) {
             self.view.screenLoading()
             db.collection("users").document((Auth.auth().currentUser?.uid)!).setData(["firstName": firstNameOutlet.text!.trimmingCharacters(in: .whitespacesAndNewlines), "lastName": lastNameOutlet.text!.trimmingCharacters(in: .whitespacesAndNewlines)]) { error in
                 self.view.screenLoaded()

@@ -14,13 +14,21 @@ class LoggedInController: UIViewController {
     
     @IBOutlet var greetingLabel: UILabel!
     
+    @IBOutlet var sadButtonOutlet: UIButton!
+    @IBOutlet var neutralButtonOutlet: UIButton!
+    @IBOutlet var happyButtonOutlet: UIButton!
+    @IBOutlet var emotionStackView: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.populateLocalUser()
+        sadButtonOutlet.imageView?.contentMode = .scaleAspectFit
+        neutralButtonOutlet.imageView?.contentMode = .scaleAspectFit
+        happyButtonOutlet.imageView?.contentMode = .scaleAspectFit
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        self.populateLocalUser()
+        self.populateLocalUser()
     }
     
     func populateLocalUser() {

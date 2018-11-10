@@ -91,8 +91,11 @@ class OnboardingController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func nextAction(_ sender: Any) {
         if nextOutlet.title(for: .normal) == "finish >" {
-            let c = UIStoryboard(name: "OnboardingTest", bundle: nil).instantiateViewController(withIdentifier: "profile")
-            navigationController?.pushViewController(c, animated: true)
+            let v = UINavigationController(rootViewController: UIStoryboard(name: "LoggedIn", bundle: nil).instantiateViewController(withIdentifier: "loggedIn"))
+            v.setNavigationBarHidden(true, animated: false)
+            UIView.transition(with: ((UIApplication.shared.delegate?.window)!)!, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+                UIApplication.shared.delegate?.window!?.rootViewController = v
+            }, completion: nil)
         }
         let pageIndex = Int(ceil(obScrollView.contentOffset.x/view.frame.width))
         if pageIndex < slides.count - 1 {
