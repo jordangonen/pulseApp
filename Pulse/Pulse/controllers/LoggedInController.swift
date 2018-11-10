@@ -10,14 +10,41 @@ import Foundation
 import UIKit
 import Firebase
 
-class LoggedInController: UIViewController {
+class LoggedInController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    // Notes for whichever mf has to implement pagination on this guy:
+    // replace mainCalendarView with a UIScrollView
+    // extend something similar to the onboarding scroll thing
+    // that means nest this shit in a horizontally-enableed scroll view with pagination enabled
+    // probably set the content width to full (instead of just to the outer scrollview
+    // iss easy calm down
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 35
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = calendarJawn.dequeueReusableCell(withReuseIdentifier: "calendarDay", for: indexPath)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        print("\n\nayooo\n")
+        let dim = floor(calendarJawn.frame.width / 7)
+        return CGSize(width: dim, height: dim)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        print("\n\ncheeeers\n")
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    @IBOutlet var dayHeadingStack: UIStackView!
     @IBOutlet var greetingLabel: UILabel!
-    
     @IBOutlet var sadButtonOutlet: UIButton!
     @IBOutlet var neutralButtonOutlet: UIButton!
     @IBOutlet var happyButtonOutlet: UIButton!
     @IBOutlet var emotionStackView: UIStackView!
+    @IBOutlet var calendarJawn: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +52,9 @@ class LoggedInController: UIViewController {
         sadButtonOutlet.imageView?.contentMode = .scaleAspectFit
         neutralButtonOutlet.imageView?.contentMode = .scaleAspectFit
         happyButtonOutlet.imageView?.contentMode = .scaleAspectFit
+        
+        calendarJawn.delegate = self
+        calendarJawn.dataSource = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
