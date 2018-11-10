@@ -89,19 +89,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friends" translatesAutoresizingMaskIntoConstraints="NO" id="86m-YJ-edG">
-                                <rect key="frame" x="30" y="155" width="315" height="100"/>
+                                <rect key="frame" x="30" y="165" width="315" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="BxJ-me-Uex"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9j-9f-KQl" userLabel="firstNameLabel">
-                                <rect key="frame" x="20" y="275" width="355" height="17"/>
+                                <rect key="frame" x="20" y="285" width="355" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jTe-dv-Dht" userLabel="firstNameField">
-                                <rect key="frame" x="20" y="302" width="335" height="35"/>
+                                <rect key="frame" x="20" y="312" width="335" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="TSr-vz-fJP"/>
                                 </constraints>
@@ -112,19 +112,22 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="firstNext:" destination="0qP-eI-VSJ" eventType="primaryActionTriggered" id="Kar-8j-ywc"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtY-Ga-VZG" userLabel="lastNameLabel">
-                                <rect key="frame" x="20" y="357" width="355" height="17"/>
+                                <rect key="frame" x="20" y="367" width="355" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8a-0d-uwU" userLabel="lastNameField">
-                                <rect key="frame" x="20" y="384" width="335" height="35"/>
+                                <rect key="frame" x="20" y="394" width="335" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="m5s-pK-XfO"/>
                                 </constraints>
@@ -135,13 +138,16 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="secondNext:" destination="0qP-eI-VSJ" eventType="primaryActionTriggered" id="fkI-f7-7dR"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gy-Rg-LCb" userLabel="submitButton">
-                                <rect key="frame" x="222" y="459" width="133" height="43"/>
+                                <rect key="frame" x="222" y="469" width="133" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="2lJ-R6-R6r"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="133" id="dle-wz-3A7"/>
@@ -174,7 +180,7 @@
                             <constraint firstItem="5gy-Rg-LCb" firstAttribute="top" secondItem="m8a-0d-uwU" secondAttribute="bottom" constant="40" id="8ZK-5i-ymW"/>
                             <constraint firstItem="swF-v5-8GH" firstAttribute="trailing" secondItem="I9j-9f-KQl" secondAttribute="trailing" id="BD1-y8-T6i"/>
                             <constraint firstItem="jTe-dv-Dht" firstAttribute="leading" secondItem="swF-v5-8GH" secondAttribute="leading" constant="20" id="FfW-Kq-auB"/>
-                            <constraint firstItem="86m-YJ-edG" firstAttribute="top" secondItem="lDJ-Kh-XIw" secondAttribute="bottom" constant="10" id="Fkx-mf-3jj"/>
+                            <constraint firstItem="86m-YJ-edG" firstAttribute="top" secondItem="lDJ-Kh-XIw" secondAttribute="bottom" constant="20" id="Fkx-mf-3jj"/>
                             <constraint firstItem="jTe-dv-Dht" firstAttribute="top" secondItem="I9j-9f-KQl" secondAttribute="bottom" constant="10" id="M9q-4c-4lk"/>
                             <constraint firstItem="lDJ-Kh-XIw" firstAttribute="top" secondItem="ESp-AX-pxC" secondAttribute="bottom" constant="10" id="PWg-EP-bq7"/>
                             <constraint firstItem="swF-v5-8GH" firstAttribute="trailing" secondItem="5gy-Rg-LCb" secondAttribute="trailing" constant="20" id="VVE-PR-Ov5"/>

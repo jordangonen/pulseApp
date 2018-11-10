@@ -11,8 +11,6 @@ import Firebase
 
 struct User {
     
-    static var db = Firestore.firestore()
-    
     static var firstName: String?
     static var lastName: String?
     
