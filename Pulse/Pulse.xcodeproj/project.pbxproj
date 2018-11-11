@@ -33,6 +33,10 @@
 		AF4D572E2195464D005D5F38 /* OnboardingPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF4D572D2195464D005D5F38 /* OnboardingPage.xib */; };
 		AF4D573021954850005D5F38 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D572F21954850005D5F38 /* OnboardingSlide.swift */; };
 		AFAA9BE02196C38B00DA3B24 /* collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA9BDF2196C38B00DA3B24 /* collection.swift */; };
+		AFAA9BE22197FA4100DA3B24 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA9BE12197FA4100DA3B24 /* Mood.swift */; };
+		AFAA9BE42197FD8600DA3B24 /* LogDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA9BE32197FD8600DA3B24 /* LogDay.swift */; };
+		AFAA9BE62197FDDA00DA3B24 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA9BE52197FDDA00DA3B24 /* Weather.swift */; };
+		AFAA9BE82198082600DA3B24 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA9BE72198082600DA3B24 /* CalendarCell.swift */; };
 		BC65C1603A39D3CB2E288583 /* Pods_PulseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764C8EFA1511882B38D6562E /* Pods_PulseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +86,10 @@
 		AF4D572D2195464D005D5F38 /* OnboardingPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingPage.xib; sourceTree = "<group>"; };
 		AF4D572F21954850005D5F38 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 		AFAA9BDF2196C38B00DA3B24 /* collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collection.swift; sourceTree = "<group>"; };
+		AFAA9BE12197FA4100DA3B24 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
+		AFAA9BE32197FD8600DA3B24 /* LogDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDay.swift; sourceTree = "<group>"; };
+		AFAA9BE52197FDDA00DA3B24 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		AFAA9BE72198082600DA3B24 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +184,9 @@
 			isa = PBXGroup;
 			children = (
 				AF3CD4BD2196176E00A00EDA /* User.swift */,
+				AFAA9BE32197FD8600DA3B24 /* LogDay.swift */,
+				AFAA9BE52197FDDA00DA3B24 /* Weather.swift */,
+				AFAA9BE12197FA4100DA3B24 /* Mood.swift */,
 				AF3CD4C3219652BC00A00EDA /* Messages.swift */,
 			);
 			path = models;
@@ -186,6 +197,7 @@
 			children = (
 				AF4D572321952544005D5F38 /* LoadingAnimation.swift */,
 				AF4D572F21954850005D5F38 /* OnboardingSlide.swift */,
+				AFAA9BE72198082600DA3B24 /* CalendarCell.swift */,
 				AF4D572D2195464D005D5F38 /* OnboardingPage.xib */,
 			);
 			path = views;
@@ -405,15 +417,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF3CD4B82196057800A00EDA /* OnboardingProfileController.swift in Sources */,
+				AFAA9BE82198082600DA3B24 /* CalendarCell.swift in Sources */,
 				AF3CD4C4219652BC00A00EDA /* Messages.swift in Sources */,
 				AF36FA662194FD440094E3CC /* SignUpController.swift in Sources */,
 				AF36FA682194FD5C0094E3CC /* LogInController.swift in Sources */,
+				AFAA9BE42197FD8600DA3B24 /* LogDay.swift in Sources */,
 				AF4D572221952281005D5F38 /* uiview.swift in Sources */,
 				AF3CD4B42195F38200A00EDA /* LandingController.swift in Sources */,
 				AF36FA612194F6E10094E3CC /* AuthNavigationController.swift in Sources */,
 				AFAA9BE02196C38B00DA3B24 /* collection.swift in Sources */,
+				AFAA9BE62197FDDA00DA3B24 /* Weather.swift in Sources */,
 				AF3CD4BE2196176E00A00EDA /* User.swift in Sources */,
 				AF36FA642194FACD0094E3CC /* color.swift in Sources */,
+				AFAA9BE22197FA4100DA3B24 /* Mood.swift in Sources */,
 				AF36FA3C2194ED020094E3CC /* AppDelegate.swift in Sources */,
 				AF4D572421952544005D5F38 /* LoadingAnimation.swift in Sources */,
 				AF36FA6C2195089A0094E3CC /* string.swift in Sources */,

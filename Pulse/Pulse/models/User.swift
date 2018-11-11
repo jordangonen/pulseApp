@@ -13,6 +13,7 @@ struct User {
     
     static var firstName: String?
     static var lastName: String?
+    static var lastLog: Date?
     
     static func getNamesFromID(_ id: String, _ completion: @escaping (Bool) -> Void) {
         db.collection("users").document(id).getDocument() { (document, error) in
