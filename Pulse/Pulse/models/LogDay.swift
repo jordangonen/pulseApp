@@ -17,7 +17,7 @@ class LogDay {
     var avg: Float {
         var avg = Float(0)
         let _ = moods.map { avg += Float($0.value) }
-        return moods.count == 0 ? 0 : avg / Float(moods.count)
+        return moods.count == 0 ? 0 : Float(Int((100 * avg / Float(moods.count)) / 100))
     }
     
     func color() -> UIColor {

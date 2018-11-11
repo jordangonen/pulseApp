@@ -19,6 +19,19 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet var happyButtonOutlet: UIButton!
     @IBOutlet var emotionStackView: UIStackView!
     @IBOutlet var calendarJawn: UICollectionView!
+    @IBOutlet var monthLabel: UILabel!
+    
+    var currDate = Date()
+    var currCal = Calendar.current
+    var numDaysInMonth: Int {
+        return (currCal.range(of: .day, in: .month, for: currDate)?.count)!
+    }
+    var startingWeekdayIndexed: Int {
+        var dc = DateComponents()
+        dc.year = currCal.component(.year, from: currDate)
+        dc.month = currCal.component(.month, from: currDate)
+        return currCal.component(.weekday, from: currCal.date(from: dc)!) - 1
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +39,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         sadButtonOutlet.imageView?.contentMode = .scaleAspectFit
         neutralButtonOutlet.imageView?.contentMode = .scaleAspectFit
         happyButtonOutlet.imageView?.contentMode = .scaleAspectFit
+        monthLabel.text = Calendar.current.monthSymbols[Calendar.current.component(.month, from: currDate) - 1]
         calendarJawn.delegate = self
         calendarJawn.dataSource = self
         setupCellConstraints()
@@ -73,12 +87,16 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     // iss easy calm down
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // actually return an int from some cool date function
-        return 35
+        // gonna have to add to this when we have multiple months showing
+        return numDaysInMonth + startingWeekdayIndexed
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = calendarJawn.dequeueReusableCell(withReuseIdentifier: "calendarDay", for: indexPath) as! CalendarCell
+        if indexPath.row < startingWeekdayIndexed {
+            cell.backgroundColor = UIColor(rgb: 0xEDEFEF)
+            return cell
+        }
         let sampleLogDay = LogDay()
         sampleLogDay.moods = (0...Int.random(in: 0...3)).map { _ in Mood("asdf", Int.random(in: 0...3), Date()) }
         cell.backgroundColor = sampleLogDay.color()
@@ -87,7 +105,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let currCell = collectionView.cellForItem(at: indexPath) as! CalendarCell
+        guard let currCell = collectionView.cellForItem(at: indexPath) as? CalendarCell else { return }
         print("\navg: \(currCell.log?.avg)")
         print("\ncolor: \(currCell.log?.color())")
         for m in currCell.log!.moods {

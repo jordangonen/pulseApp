@@ -135,7 +135,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </view>
-                                                <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="0.53617294520000003" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.928387360654922" green="0.93757931472081224" blue="0.93757931472081224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
@@ -154,21 +154,30 @@
                                     <constraint firstItem="1hE-WX-EhW" firstAttribute="top" secondItem="oIs-VA-GWf" secondAttribute="top" id="wpS-vM-zqG"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Logs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs4-3f-PRT">
-                                <rect key="frame" x="30" y="606.5" width="78.5" height="20.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20.5" id="pkC-M7-qxv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="34" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs4-3f-PRT">
+                                <rect key="frame" x="30" y="591" width="37" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Log Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2c-A3-pdA">
-                                <rect key="frame" x="237.5" y="606.5" width="107.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14 minutes ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2c-A3-pdA">
+                                <rect key="frame" x="246.5" y="604.5" width="98.5" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20.5" id="pzQ-VX-abk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ye2-dv-whR">
+                                <rect key="frame" x="72" y="606" width="31.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last log" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQW-wd-O5T">
+                                <rect key="frame" x="293.5" y="585.5" width="51.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -182,11 +191,15 @@
                             <constraint firstItem="oIs-VA-GWf" firstAttribute="leading" secondItem="Z8J-lQ-HyD" secondAttribute="leading" constant="30" id="KOA-Wc-mrM"/>
                             <constraint firstItem="3oR-9d-ivh" firstAttribute="centerX" secondItem="Z8J-lQ-HyD" secondAttribute="centerX" id="MOK-ZS-SqQ"/>
                             <constraint firstItem="Z8J-lQ-HyD" firstAttribute="trailing" secondItem="X2c-A3-pdA" secondAttribute="trailing" constant="30" id="O5D-jd-8yi"/>
+                            <constraint firstItem="qs4-3f-PRT" firstAttribute="bottom" secondItem="Ye2-dv-whR" secondAttribute="bottom" constant="4" id="O9Y-F9-hBS"/>
                             <constraint firstItem="Z8J-lQ-HyD" firstAttribute="bottom" secondItem="qs4-3f-PRT" secondAttribute="bottom" constant="40" id="PSP-0V-gpQ"/>
+                            <constraint firstItem="Ye2-dv-whR" firstAttribute="leading" secondItem="qs4-3f-PRT" secondAttribute="trailing" constant="5" id="Thu-MI-4Dn"/>
                             <constraint firstItem="3oR-9d-ivh" firstAttribute="top" secondItem="Lbg-cL-zzZ" secondAttribute="bottom" constant="10" id="fYz-zA-jEE"/>
                             <constraint firstItem="oIs-VA-GWf" firstAttribute="centerX" secondItem="Z8J-lQ-HyD" secondAttribute="centerX" id="fem-xZ-tl9"/>
                             <constraint firstItem="oIs-VA-GWf" firstAttribute="top" secondItem="3oR-9d-ivh" secondAttribute="bottom" constant="10" id="hkl-k7-Jps"/>
-                            <constraint firstItem="Z8J-lQ-HyD" firstAttribute="bottom" secondItem="X2c-A3-pdA" secondAttribute="bottom" constant="40" id="p5t-oQ-knS"/>
+                            <constraint firstItem="Z8J-lQ-HyD" firstAttribute="bottom" secondItem="X2c-A3-pdA" secondAttribute="bottom" constant="42" id="p5t-oQ-knS"/>
+                            <constraint firstItem="TQW-wd-O5T" firstAttribute="trailing" secondItem="X2c-A3-pdA" secondAttribute="trailing" id="ro3-3q-FM4"/>
+                            <constraint firstItem="X2c-A3-pdA" firstAttribute="top" secondItem="TQW-wd-O5T" secondAttribute="bottom" constant="2" id="zZg-Zy-TmJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Z8J-lQ-HyD"/>
                     </view>
@@ -197,6 +210,7 @@
                         <outlet property="emotionStackView" destination="3oR-9d-ivh" id="3aK-Bk-tak"/>
                         <outlet property="greetingLabel" destination="Lbg-cL-zzZ" id="gYN-uY-lMX"/>
                         <outlet property="happyButtonOutlet" destination="f8u-8x-aen" id="2in-YS-MEF"/>
+                        <outlet property="monthLabel" destination="1hE-WX-EhW" id="8ff-pn-j6O"/>
                         <outlet property="neutralButtonOutlet" destination="qkd-CO-zqt" id="jGT-Nm-BuA"/>
                         <outlet property="sadButtonOutlet" destination="zOP-23-1jD" id="fLi-Hm-XVX"/>
                     </connections>
