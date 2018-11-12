@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class Weather {
+class Weather: Codable {
     
     var lowTemp: Int!
     var highTemp: Int!
     var type: String!
-    var image: UIImage?
+    var imageString: String?
     
     init(l: Int, h: Int, t: String) {
         self.lowTemp = l

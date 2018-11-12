@@ -20,6 +20,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet var emotionStackView: UIStackView!
     @IBOutlet var calendarJawn: UICollectionView!
     @IBOutlet var monthLabel: UILabel!
+    @IBOutlet var totalLogs: UILabel!
     
     var currDate = Date()
     var currCal = Calendar.current
@@ -36,13 +37,51 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         self.populateLocalUser()
-        sadButtonOutlet.imageView?.contentMode = .scaleAspectFit
-        neutralButtonOutlet.imageView?.contentMode = .scaleAspectFit
-        happyButtonOutlet.imageView?.contentMode = .scaleAspectFit
-        monthLabel.text = Calendar.current.monthSymbols[Calendar.current.component(.month, from: currDate) - 1]
+        self.setupButtons()
         calendarJawn.delegate = self
         calendarJawn.dataSource = self
         setupCellConstraints()
+    }
+    
+    func reloadLabels() {
+        monthLabel.text = Calendar.current.monthSymbols[Calendar.current.component(.month, from: currDate) - 1]
+        User.totalLogs { result in
+            if result < 0 {
+                self.totalLogs.text = "Fuck"
+            } else {
+                self.totalLogs.text = String(result)
+            }
+        }
+    }
+    
+    func setupButtons() {
+        sadButtonOutlet.imageView?.contentMode = .scaleAspectFit
+        neutralButtonOutlet.imageView?.contentMode = .scaleAspectFit
+        happyButtonOutlet.imageView?.contentMode = .scaleAspectFit
+        
+        for b:UIButton in [sadButtonOutlet, neutralButtonOutlet, happyButtonOutlet] {
+            b.addTarget(self, action: #selector(registerMood(_:)), for: .touchUpInside)
+        }
+    }
+    
+    @objc func registerMood(_ sender: UIButton) {
+        let m = Mood(sender.tag - 60, Date())
+        self.view.screenLoading()
+        m.upload({ b in
+            self.view.screenLoaded()
+            if b {
+                print("\nayooo\n")
+            } else {
+                print("\naynooo\n")
+            }
+        }, { b in
+            if b {
+                print("\nupdated\n")
+                self.reloadLabels()
+            } else {
+                print("\ndidn't update\n")
+            }
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +103,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
             self.view.screenLoading()
             User.getNamesFromID((Auth.auth().currentUser?.uid)!) { success in
                 if success {
+                    self.reloadLabels()
                     self.greetingLabel.text = WelcomeMessage.getMessage()
                     self.view.screenLoaded()
                 } else {
@@ -98,7 +138,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
             return cell
         }
         let sampleLogDay = LogDay()
-        sampleLogDay.moods = (0...Int.random(in: 0...3)).map { _ in Mood("asdf", Int.random(in: 0...3), Date()) }
+        sampleLogDay.moods = (0...Int.random(in: 0...3)).map { _ in Mood(Int.random(in: 0...2), Date()) }
         cell.backgroundColor = sampleLogDay.color()
         cell.log = sampleLogDay
         return cell

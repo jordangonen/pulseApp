@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LogDay {
+class LogDay: Codable {
     
     var moods: [Mood] = [Mood]()
     var weather: Weather?
@@ -24,9 +24,10 @@ class LogDay {
         if moods.count == 0 { return UIColor.lightGray }
         
         // converts the average mood into a transparency value between 0.5 and 1.0
-        let affa = CGFloat(Double(Int(avg * 100 - 1) % 100) / 100.0) / 2.0 + 0.5
+        let scaledAvg = avg * 1.5
+        let affa = CGFloat(Double(Int(scaledAvg * 100 - 1) % 100) / 100.0) / 2.0 + 0.5
         
-        switch avg {
+        switch scaledAvg {
         case 0..<1:
             return UIColor.Pulse.red.withAlphaComponent(1.5 - affa)
             break
