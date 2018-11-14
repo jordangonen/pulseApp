@@ -15,6 +15,7 @@ class Mood: Codable {
     var dateTime: Date!
     var year: String { return String(Calendar.current.component(.year, from: self.dateTime)) }
     var month: String { return String(Calendar.current.component(.month, from: self.dateTime)) }
+    var day: Int { return Calendar.current.component(.day, from: self.dateTime) }
     
     init(_ v: Int, _ d: Date) {
         self.value = v
@@ -25,9 +26,14 @@ class Mood: Codable {
         // add date to appropriate month document
         let id = Auth.auth().currentUser!.uid
         let collectionPath = "users/\(id)/years/\(self.year)/months/\(self.month)/moods"
-        db.collection(collectionPath).addDocument(data: ["value": self.value, "dateTime": lround(self.dateTime.timeIntervalSince1970)]) { err in
+        db.collection(collectionPath).addDocument(data: ["value": self.value, "dateTime": lround(self.dateTime.timeIntervalSince1970), "day": self.day]) { err in
             if err == nil {
                 insertCompletion(true)
+                
+                // update last log for user
+                db.document("users/\(id)/stats/times").setData(["lastLogTime": self.dateTime.timeIntervalSince1970])
+                User.lastLog = self.dateTime
+                
                 // update log counter guy
                 let updateRef = db.document("users/\(id)/stats/counts")
                 db.runTransaction({ (transaction, errorPointer) -> Any? in

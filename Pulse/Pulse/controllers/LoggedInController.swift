@@ -12,6 +12,7 @@ import Firebase
 
 class LoggedInController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    // outlet variables
     @IBOutlet var dayHeadingStack: UIStackView!
     @IBOutlet var greetingLabel: UILabel!
     @IBOutlet var sadButtonOutlet: UIButton!
@@ -21,12 +22,17 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet var calendarJawn: UICollectionView!
     @IBOutlet var monthLabel: UILabel!
     @IBOutlet var totalLogs: UILabel!
+    @IBOutlet var lastLogLabel: UILabel!
     
+    // data management variables
+    var monthData = [Int: LogDay]()
     var currDate = Date()
     var currCal = Calendar.current
     var numDaysInMonth: Int {
         return (currCal.range(of: .day, in: .month, for: currDate)?.count)!
     }
+    
+    // e.g. if the first of the month is a Thursday, startingWeekdayIndexed = 4
     var startingWeekdayIndexed: Int {
         var dc = DateComponents()
         dc.year = currCal.component(.year, from: currDate)
@@ -34,24 +40,113 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         return currCal.component(.weekday, from: currCal.date(from: dc)!) - 1
     }
     
+    // to settings
+    @IBAction func goSettings(_ sender: Any) {
+        self.navigationController?.pushViewController(UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "settings"), animated: true)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.populateLocalUser()
         self.setupButtons()
+        self.setupCellConstraints()
         calendarJawn.delegate = self
         calendarJawn.dataSource = self
-        setupCellConstraints()
+        
+        // initialize periodic refreshes
+        let timer = RepeatingTimer(10)
+        timer.eventHandler = { self.reloadLabels(); print("reloaded") }
+        timer.resume()
+    }
+    
+    // necessary for signup flow (since onboarding profile form blocks data)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !(isBeingPresented || isMovingToParent) {
+            self.populateLocalUser()
+        }
+    }
+    
+    // set the names for a user object if we need to
+    /**
+     Populates the static User object names if necessary, using the flow specified in Discussion section
+        - if User.firstName.exists, just reload the labels
+        - else if remote database has User.firstName, populate User object with names and reload labels
+        - else prompt user for names, then reload labels via viewWillAppear
+    */
+    func populateLocalUser() {
+        if User.firstName == nil {
+            self.view.screenLoading()
+            // getNamesFromID checks firebase for name info and sets the User static variables firstName and lastName
+            User.getNamesFromID((Auth.auth().currentUser?.uid)!) { success in
+                if success {
+                    // User is successfully updated, so reload the labels accordingly
+                    self.reloadLabels()
+                } else {
+                    self.view.screenLoaded()
+                    // present profile form
+                    let p = UIStoryboard(name: "OnboardingTest", bundle: nil).instantiateViewController(withIdentifier: "profile")
+                    p.modalTransitionStyle = .coverVertical
+                    self.present(p, animated: true, completion: nil)
+                }
+            }
+        } else {
+            reloadLabels()
+        }
     }
     
     func reloadLabels() {
+        greetingLabel.text = Messages.getWelcome()
         monthLabel.text = Calendar.current.monthSymbols[Calendar.current.component(.month, from: currDate) - 1]
-        User.totalLogs { result in
-            if result < 0 {
-                self.totalLogs.text = "Fuck"
-            } else {
-                self.totalLogs.text = String(result)
-            }
+        User.totalLogs { result in self.totalLogs.text = result < 0 ? "?" : String(result) }
+        Messages.getLastLog() { m in self.lastLogLabel.text = m }
+        self.getCalendarIfNeeded() { self.view.screenLoaded() }
+    }
+    
+    /**
+     Reloads calendar data for month, getting data from server if necessary
+     
+     - Important: completion handler MUST call .screenLoaded() at some point
+    */
+    func getCalendarIfNeeded(_ completion: @escaping () -> Void) {
+        if monthData.count > 0 {
+            self.calendarJawn.reloadData()
+            completion()
+            return
         }
+        let month = currCal.component(.month, from: currDate)
+        let year = currCal.component(.year, from: currDate)
+        User.moodsFromMonth(year, month) { s in
+            completion()
+            guard let x: [Int: LogDay] = s else { return }
+            self.monthData = x
+            self.calendarJawn.reloadData()
+        }
+    }
+    
+    @objc func registerMood(_ sender: UIButton) {
+        let m = Mood(sender.tag - 60, Date())
+        self.view.screenLoading()
+        m.upload({ b in
+            if !b {
+                // TODO: alert upload error
+            }
+        }, { b in
+            if b {
+                let dayInt = self.currCal.component(.day, from: self.currDate)
+                if let d = self.monthData[dayInt] {
+                    d.moods.append(m)
+                } else {
+                    let d = LogDay()
+                    d.moods.append(m)
+                    self.monthData[dayInt] = d
+                }
+                self.reloadLabels()
+            } else {
+                // TODO: alert update error
+            }
+        })
     }
     
     func setupButtons() {
@@ -64,30 +159,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    @objc func registerMood(_ sender: UIButton) {
-        let m = Mood(sender.tag - 60, Date())
-        self.view.screenLoading()
-        m.upload({ b in
-            self.view.screenLoaded()
-            if b {
-                print("\nayooo\n")
-            } else {
-                print("\naynooo\n")
-            }
-        }, { b in
-            if b {
-                print("\nupdated\n")
-                self.reloadLabels()
-            } else {
-                print("\ndidn't update\n")
-            }
-        })
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        self.populateLocalUser()
-    }
-    
+    /// Pretty self-explanatory huh
     func setupCellConstraints() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -98,25 +170,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         calendarJawn.collectionViewLayout = layout
     }
     
-    func populateLocalUser() {
-        if User.firstName == nil {
-            self.view.screenLoading()
-            User.getNamesFromID((Auth.auth().currentUser?.uid)!) { success in
-                if success {
-                    self.reloadLabels()
-                    self.greetingLabel.text = WelcomeMessage.getMessage()
-                    self.view.screenLoaded()
-                } else {
-                    self.view.screenLoaded()
-                    let p = UIStoryboard(name: "OnboardingTest", bundle: nil).instantiateViewController(withIdentifier: "profile")
-                    p.modalTransitionStyle = .coverVertical
-                    self.present(p, animated: true, completion: nil)
-                }
-            }
-        } else {
-            greetingLabel.text = WelcomeMessage.getMessage()
-        }
-    }
+    
     
     // Notes for whichever mf has to implement pagination on this guy:
     // replace mainCalendarView with a UIScrollView
@@ -128,28 +182,23 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // gonna have to add to this when we have multiple months showing
-        return numDaysInMonth + startingWeekdayIndexed
+        return 35
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = calendarJawn.dequeueReusableCell(withReuseIdentifier: "calendarDay", for: indexPath) as! CalendarCell
-        if indexPath.row < startingWeekdayIndexed {
-            cell.backgroundColor = UIColor(rgb: 0xEDEFEF)
-            return cell
-        }
-        let sampleLogDay = LogDay()
-        sampleLogDay.moods = (0...Int.random(in: 0...3)).map { _ in Mood(Int.random(in: 0...2), Date()) }
-        cell.backgroundColor = sampleLogDay.color()
-        cell.log = sampleLogDay
+        let lastDayIndex = startingWeekdayIndexed + numDaysInMonth - 1
+        cell.backgroundColor = (startingWeekdayIndexed ... lastDayIndex).contains(indexPath.row) ? UIColor(rgb: 0xe7e7e7) : UIColor(rgb: 0xf0f0f0)
+        guard let day = self.monthData[indexPath.row - 3] else { return cell }
+        cell.backgroundColor = day.color()
+        cell.log = day
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let currCell = collectionView.cellForItem(at: indexPath) as? CalendarCell else { return }
-        print("\navg: \(currCell.log?.avg)")
-        print("\ncolor: \(currCell.log?.color())")
-        for m in currCell.log!.moods {
-            print("\ndate: \(m.dateTime)")
+        if let logDay = currCell.log {
+            
         }
     }
     

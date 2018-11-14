@@ -154,14 +154,14 @@
                                     <constraint firstItem="1hE-WX-EhW" firstAttribute="top" secondItem="oIs-VA-GWf" secondAttribute="top" id="wpS-vM-zqG"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="34" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs4-3f-PRT">
-                                <rect key="frame" x="30" y="591" width="37" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs4-3f-PRT">
+                                <rect key="frame" x="30" y="591" width="19" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14 minutes ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2c-A3-pdA">
-                                <rect key="frame" x="246.5" y="604.5" width="98.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/a" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2c-A3-pdA">
+                                <rect key="frame" x="322.5" y="604.5" width="22.5" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20.5" id="pzQ-VX-abk"/>
                                 </constraints>
@@ -170,22 +170,34 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ye2-dv-whR">
-                                <rect key="frame" x="72" y="606" width="31.5" height="17"/>
+                                <rect key="frame" x="54" y="606" width="31.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last log" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQW-wd-O5T">
                                 <rect key="frame" x="293.5" y="585.5" width="51.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTj-ts-3MW">
+                                <rect key="frame" x="315" y="35" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="ige-aT-QIO"/>
+                                    <constraint firstAttribute="height" constant="30" id="w0a-ce-teQ"/>
+                                </constraints>
+                                <state key="normal" image="settings"/>
+                                <connections>
+                                    <action selector="goSettings:" destination="vue-CX-U3Q" eventType="touchUpInside" id="jl0-mh-MAf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qs4-3f-PRT" firstAttribute="leading" secondItem="Z8J-lQ-HyD" secondAttribute="leading" constant="30" id="1TZ-qX-dxN"/>
                             <constraint firstItem="Lbg-cL-zzZ" firstAttribute="leading" secondItem="Z8J-lQ-HyD" secondAttribute="leading" constant="30" id="215-DL-lV2"/>
+                            <constraint firstItem="Z8J-lQ-HyD" firstAttribute="trailing" secondItem="lTj-ts-3MW" secondAttribute="trailing" constant="30" id="6lN-Us-ELT"/>
                             <constraint firstItem="3oR-9d-ivh" firstAttribute="leading" secondItem="Z8J-lQ-HyD" secondAttribute="leading" constant="30" id="8sc-Ts-T7i"/>
                             <constraint firstItem="Lbg-cL-zzZ" firstAttribute="top" secondItem="Z8J-lQ-HyD" secondAttribute="top" constant="40" id="Ha2-V7-Ogj"/>
                             <constraint firstItem="oIs-VA-GWf" firstAttribute="leading" secondItem="Z8J-lQ-HyD" secondAttribute="leading" constant="30" id="KOA-Wc-mrM"/>
@@ -194,6 +206,7 @@
                             <constraint firstItem="qs4-3f-PRT" firstAttribute="bottom" secondItem="Ye2-dv-whR" secondAttribute="bottom" constant="4" id="O9Y-F9-hBS"/>
                             <constraint firstItem="Z8J-lQ-HyD" firstAttribute="bottom" secondItem="qs4-3f-PRT" secondAttribute="bottom" constant="40" id="PSP-0V-gpQ"/>
                             <constraint firstItem="Ye2-dv-whR" firstAttribute="leading" secondItem="qs4-3f-PRT" secondAttribute="trailing" constant="5" id="Thu-MI-4Dn"/>
+                            <constraint firstItem="lTj-ts-3MW" firstAttribute="top" secondItem="Z8J-lQ-HyD" secondAttribute="top" constant="15" id="WhJ-mU-qCf"/>
                             <constraint firstItem="3oR-9d-ivh" firstAttribute="top" secondItem="Lbg-cL-zzZ" secondAttribute="bottom" constant="10" id="fYz-zA-jEE"/>
                             <constraint firstItem="oIs-VA-GWf" firstAttribute="centerX" secondItem="Z8J-lQ-HyD" secondAttribute="centerX" id="fem-xZ-tl9"/>
                             <constraint firstItem="oIs-VA-GWf" firstAttribute="top" secondItem="3oR-9d-ivh" secondAttribute="bottom" constant="10" id="hkl-k7-Jps"/>
@@ -210,6 +223,7 @@
                         <outlet property="emotionStackView" destination="3oR-9d-ivh" id="3aK-Bk-tak"/>
                         <outlet property="greetingLabel" destination="Lbg-cL-zzZ" id="gYN-uY-lMX"/>
                         <outlet property="happyButtonOutlet" destination="f8u-8x-aen" id="2in-YS-MEF"/>
+                        <outlet property="lastLogLabel" destination="X2c-A3-pdA" id="Enk-Bu-GrG"/>
                         <outlet property="monthLabel" destination="1hE-WX-EhW" id="8ff-pn-j6O"/>
                         <outlet property="neutralButtonOutlet" destination="qkd-CO-zqt" id="jGT-Nm-BuA"/>
                         <outlet property="sadButtonOutlet" destination="zOP-23-1jD" id="fLi-Hm-XVX"/>
@@ -225,5 +239,6 @@
         <image name="happy" width="238" height="238"/>
         <image name="neutral" width="238" height="238"/>
         <image name="sad" width="238" height="238"/>
+        <image name="settings" width="512" height="512"/>
     </resources>
 </document>

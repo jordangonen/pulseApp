@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         db.settings = settings
         
         // debugging (true = force login, false = normal operation)
-        if true {
+        if false {
             do {
                 try Auth.auth().signOut()
             } catch let signOutError as NSError {

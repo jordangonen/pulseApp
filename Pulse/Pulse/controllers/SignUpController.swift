@@ -17,16 +17,12 @@ class SignUpController: UIViewController {
     }
     
     @IBOutlet var emailOutlet: UITextField!
-    
     @IBOutlet var passwordOutlet: UITextField!
-    
     @IBOutlet var confirmOutlet: UITextField!
-    
     
     @IBAction func emailDidChange(_ sender: Any) {
         let _ = emailOutlet.validateEmail()
     }
-    
     
     @IBAction func passwordDidChange(_ sender: Any) {
         let _ = passwordOutlet.validatePassword()
@@ -45,7 +41,6 @@ class SignUpController: UIViewController {
         confirmOutlet.becomeFirstResponder()
     }
     
-    
     @IBAction func confirmWithReturn(_ sender: Any) {
         confirmOutlet.resignFirstResponder()
         submitSignup(self)
@@ -60,7 +55,13 @@ class SignUpController: UIViewController {
         confirmOutlet.layer.borderWidth = 1.0
     }
     
-    
+    /**
+     Attempts to log in user with fields, failing if validation is false
+     
+     - Presents alert if signup fails
+     - creates a stats file for the user
+     - presents the onboarding controller
+    */
     @IBAction func submitSignup(_ sender: Any) {
         if validateAll() {
             self.view.screenLoading()
@@ -75,10 +76,12 @@ class SignUpController: UIViewController {
                         if let e = error {
                             print(e)
                         } else {
+                            ar.user.sendEmailVerification()
                             let hah = UIStoryboard(name: "OnboardingTest", bundle: nil).instantiateViewController(withIdentifier: "onboardingJawn")
                             self.navigationController?.pushViewController(hah, animated: true)
                         }
                     }
+                    db.document("users/\(ar.user.uid)/stats/times").setData(["lastLogTime": 0]) {_ in }
                 }
             }
         }

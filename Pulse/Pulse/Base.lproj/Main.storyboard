@@ -27,7 +27,7 @@
         <!--Landing Controller-->
         <scene sceneID="yTC-Ti-E9l">
             <objects>
-                <viewController id="4m4-0Q-YJ5" customClass="LandingController" customModule="Pulse" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loggedOut" id="4m4-0Q-YJ5" customClass="LandingController" customModule="Pulse" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ahA-UP-BhD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

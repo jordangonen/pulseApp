@@ -46,9 +46,9 @@ class LogInController: UIViewController {
                 self.view.screenLoaded()
                 let alert = UIAlertController(title: "Uh-oh!", message: "Something went wrong", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
-                alert.addAction(UIAlertAction(title: "Reload", style: .default, handler: { UIAlertAction in self.loginButton(self) }))
                 if let e = AuthErrorCode(rawValue: error!._code) {
                     switch e {
+                        // may need to change this to reflect security best practices (i.e., return identical alerts for .wrongPassword and <userNotFound>)
                     case .wrongPassword:
                         alert.message = "Login failed (password)"
                         break
@@ -56,6 +56,7 @@ class LogInController: UIViewController {
                         alert.message = "That email address doesn't look quite right"
                         break
                     default:
+                        alert.message = "We couldn't find a user with that email address"
                         break
                     }
                 }
