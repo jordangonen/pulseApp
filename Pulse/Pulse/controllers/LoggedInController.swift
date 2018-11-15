@@ -53,11 +53,9 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         self.setupCellConstraints()
         calendarJawn.delegate = self
         calendarJawn.dataSource = self
-        
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
         // initialize periodic refreshes
-        let timer = RepeatingTimer(10)
-        timer.eventHandler = { self.reloadLabels(); print("reloaded") }
-        timer.resume()
+        
     }
     
     // necessary for signup flow (since onboarding profile form blocks data)

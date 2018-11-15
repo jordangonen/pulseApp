@@ -1,20 +1,15 @@
-//
-//  timer.swift
-//  Pulse
-//
-//  Created by Reilly Freret on 11/13/18.
-//  Copyright © 2018 Reilly Freret. All rights reserved.
-//
 
-import Foundation
-// RepeatingTimer mimics the API of DispatchSourceTimer but in a way that prevents
+/// RepeatingTimer mimics the API of DispatchSourceTimer but in a way that prevents
 /// crashes that occur from calling resume multiple times on a timer that is
 /// already resumed (noted by https://github.com/SiftScience/sift-ios/issues/52
+
+import Foundation
+
 class RepeatingTimer {
     
     let timeInterval: TimeInterval
     
-    init(_ timeInterval: TimeInterval) {
+    init(timeInterval: TimeInterval) {
         self.timeInterval = timeInterval
     }
     
