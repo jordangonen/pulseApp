@@ -28,10 +28,20 @@
 		AF3CD4C221961BA800A00EDA /* LoggedInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CD4C121961BA800A00EDA /* LoggedInController.swift */; };
 		AF3CD4C4219652BC00A00EDA /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CD4C3219652BC00A00EDA /* Messages.swift */; };
 		AF4D572221952281005D5F38 /* uiview.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D572121952281005D5F38 /* uiview.swift */; };
-		AF4D572421952544005D5F38 /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D572321952544005D5F38 /* LoadingAnimation.swift */; };
 		AF4D572C219542BF005D5F38 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D572B219542BF005D5F38 /* OnboardingController.swift */; };
 		AF4D572E2195464D005D5F38 /* OnboardingPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF4D572D2195464D005D5F38 /* OnboardingPage.xib */; };
 		AF4D573021954850005D5F38 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D572F21954850005D5F38 /* OnboardingSlide.swift */; };
+		AF726C6B219A33C100A9D5FC /* operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF726C6A219A33C100A9D5FC /* operations.swift */; };
+		AF726C6D219B95ED00A9D5FC /* date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF726C6C219B95ED00A9D5FC /* date.swift */; };
+		AF726C70219BA06000A9D5FC /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF726C6F219BA06000A9D5FC /* Settings.storyboard */; };
+		AF726C72219BA40E00A9D5FC /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF726C71219BA40E00A9D5FC /* SettingsController.swift */; };
+		AF726C75219BA9DD00A9D5FC /* timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF726C74219BA9DD00A9D5FC /* timer.swift */; };
+		AF726C77219CDCE800A9D5FC /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF726C76219CDCE800A9D5FC /* DayView.swift */; };
+		AFAA9BE02196C38B00DA3B24 /* collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA9BDF2196C38B00DA3B24 /* collection.swift */; };
+		AFAA9BE22197FA4100DA3B24 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA9BE12197FA4100DA3B24 /* Mood.swift */; };
+		AFAA9BE42197FD8600DA3B24 /* LogDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA9BE32197FD8600DA3B24 /* LogDay.swift */; };
+		AFAA9BE62197FDDA00DA3B24 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA9BE52197FDDA00DA3B24 /* Weather.swift */; };
+		AFAA9BE82198082600DA3B24 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA9BE72198082600DA3B24 /* CalendarCell.swift */; };
 		BC65C1603A39D3CB2E288583 /* Pods_PulseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764C8EFA1511882B38D6562E /* Pods_PulseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,10 +86,20 @@
 		AF3CD4C121961BA800A00EDA /* LoggedInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInController.swift; sourceTree = "<group>"; };
 		AF3CD4C3219652BC00A00EDA /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		AF4D572121952281005D5F38 /* uiview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uiview.swift; sourceTree = "<group>"; };
-		AF4D572321952544005D5F38 /* LoadingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
 		AF4D572B219542BF005D5F38 /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
 		AF4D572D2195464D005D5F38 /* OnboardingPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingPage.xib; sourceTree = "<group>"; };
 		AF4D572F21954850005D5F38 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
+		AF726C6A219A33C100A9D5FC /* operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = operations.swift; sourceTree = "<group>"; };
+		AF726C6C219B95ED00A9D5FC /* date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = date.swift; sourceTree = "<group>"; };
+		AF726C6F219BA06000A9D5FC /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		AF726C71219BA40E00A9D5FC /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		AF726C74219BA9DD00A9D5FC /* timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timer.swift; sourceTree = "<group>"; };
+		AF726C76219CDCE800A9D5FC /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		AFAA9BDF2196C38B00DA3B24 /* collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collection.swift; sourceTree = "<group>"; };
+		AFAA9BE12197FA4100DA3B24 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
+		AFAA9BE32197FD8600DA3B24 /* LogDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDay.swift; sourceTree = "<group>"; };
+		AFAA9BE52197FDDA00DA3B24 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		AFAA9BE72198082600DA3B24 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +165,7 @@
 		AF36FA3A2194ED020094E3CC /* Pulse */ = {
 			isa = PBXGroup;
 			children = (
+				AF726C73219BA9CA00A9D5FC /* misc */,
 				AF36FA622194FA630094E3CC /* extensions */,
 				AF36FA5F2194F5680094E3CC /* controllers */,
 				AF36FA5E2194F5630094E3CC /* views */,
@@ -153,6 +174,7 @@
 				AF36FA3F2194ED020094E3CC /* Main.storyboard */,
 				AF3CD4B52196000700A00EDA /* OnboardingTest.storyboard */,
 				AF3CD4BF21961B6800A00EDA /* LoggedIn.storyboard */,
+				AF726C6F219BA06000A9D5FC /* Settings.storyboard */,
 				AF36FA422194ED050094E3CC /* Assets.xcassets */,
 				AF36FA442194ED050094E3CC /* LaunchScreen.storyboard */,
 				AF36FA472194ED050094E3CC /* Info.plist */,
@@ -174,6 +196,9 @@
 			isa = PBXGroup;
 			children = (
 				AF3CD4BD2196176E00A00EDA /* User.swift */,
+				AFAA9BE32197FD8600DA3B24 /* LogDay.swift */,
+				AFAA9BE52197FDDA00DA3B24 /* Weather.swift */,
+				AFAA9BE12197FA4100DA3B24 /* Mood.swift */,
 				AF3CD4C3219652BC00A00EDA /* Messages.swift */,
 			);
 			path = models;
@@ -182,8 +207,9 @@
 		AF36FA5E2194F5630094E3CC /* views */ = {
 			isa = PBXGroup;
 			children = (
-				AF4D572321952544005D5F38 /* LoadingAnimation.swift */,
 				AF4D572F21954850005D5F38 /* OnboardingSlide.swift */,
+				AFAA9BE72198082600DA3B24 /* CalendarCell.swift */,
+				AF726C76219CDCE800A9D5FC /* DayView.swift */,
 				AF4D572D2195464D005D5F38 /* OnboardingPage.xib */,
 			);
 			path = views;
@@ -198,6 +224,7 @@
 				AF3CD4B72196057800A00EDA /* OnboardingProfileController.swift */,
 				AF36FA672194FD5C0094E3CC /* LogInController.swift */,
 				AF3CD4C121961BA800A00EDA /* LoggedInController.swift */,
+				AF726C71219BA40E00A9D5FC /* SettingsController.swift */,
 				AF3CD4B32195F38200A00EDA /* LandingController.swift */,
 			);
 			path = controllers;
@@ -207,11 +234,22 @@
 			isa = PBXGroup;
 			children = (
 				AF36FA632194FACD0094E3CC /* color.swift */,
+				AFAA9BDF2196C38B00DA3B24 /* collection.swift */,
 				AF4D572121952281005D5F38 /* uiview.swift */,
+				AF726C6C219B95ED00A9D5FC /* date.swift */,
 				AF36FA69219506D90094E3CC /* textfield.swift */,
 				AF36FA6B2195089A0094E3CC /* string.swift */,
 			);
 			path = extensions;
+			sourceTree = "<group>";
+		};
+		AF726C73219BA9CA00A9D5FC /* misc */ = {
+			isa = PBXGroup;
+			children = (
+				AF726C6A219A33C100A9D5FC /* operations.swift */,
+				AF726C74219BA9DD00A9D5FC /* timer.swift */,
+			);
+			path = misc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +339,7 @@
 				AF36FA462194ED050094E3CC /* LaunchScreen.storyboard in Resources */,
 				AF3CD4B62196000700A00EDA /* OnboardingTest.storyboard in Resources */,
 				AF3CD4C021961B6800A00EDA /* LoggedIn.storyboard in Resources */,
+				AF726C70219BA06000A9D5FC /* Settings.storyboard in Resources */,
 				AF4D572E2195464D005D5F38 /* OnboardingPage.xib in Resources */,
 				AF36FA5C2194ED6E0094E3CC /* GoogleService-Info.plist in Resources */,
 				AF36FA432194ED050094E3CC /* Assets.xcassets in Resources */,
@@ -402,19 +441,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF3CD4B82196057800A00EDA /* OnboardingProfileController.swift in Sources */,
+				AF726C77219CDCE800A9D5FC /* DayView.swift in Sources */,
+				AFAA9BE82198082600DA3B24 /* CalendarCell.swift in Sources */,
 				AF3CD4C4219652BC00A00EDA /* Messages.swift in Sources */,
 				AF36FA662194FD440094E3CC /* SignUpController.swift in Sources */,
 				AF36FA682194FD5C0094E3CC /* LogInController.swift in Sources */,
+				AFAA9BE42197FD8600DA3B24 /* LogDay.swift in Sources */,
 				AF4D572221952281005D5F38 /* uiview.swift in Sources */,
+				AF726C6D219B95ED00A9D5FC /* date.swift in Sources */,
+				AF726C6B219A33C100A9D5FC /* operations.swift in Sources */,
 				AF3CD4B42195F38200A00EDA /* LandingController.swift in Sources */,
 				AF36FA612194F6E10094E3CC /* AuthNavigationController.swift in Sources */,
+				AFAA9BE02196C38B00DA3B24 /* collection.swift in Sources */,
+				AFAA9BE62197FDDA00DA3B24 /* Weather.swift in Sources */,
 				AF3CD4BE2196176E00A00EDA /* User.swift in Sources */,
 				AF36FA642194FACD0094E3CC /* color.swift in Sources */,
+				AF726C75219BA9DD00A9D5FC /* timer.swift in Sources */,
+				AFAA9BE22197FA4100DA3B24 /* Mood.swift in Sources */,
 				AF36FA3C2194ED020094E3CC /* AppDelegate.swift in Sources */,
-				AF4D572421952544005D5F38 /* LoadingAnimation.swift in Sources */,
 				AF36FA6C2195089A0094E3CC /* string.swift in Sources */,
 				AF4D572C219542BF005D5F38 /* OnboardingController.swift in Sources */,
 				AF3CD4C221961BA800A00EDA /* LoggedInController.swift in Sources */,
+				AF726C72219BA40E00A9D5FC /* SettingsController.swift in Sources */,
 				AF36FA6A219506D90094E3CC /* textfield.swift in Sources */,
 				AF4D573021954850005D5F38 /* OnboardingSlide.swift in Sources */,
 			);

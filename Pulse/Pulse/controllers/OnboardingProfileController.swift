@@ -29,6 +29,12 @@ class OnboardingProfileController: UIViewController {
         super.viewDidLoad()
     }
     
+    /**
+     Attempts to write a user's full name to firebase
+     
+     - Dismisses itself on success
+     - Presents alert on failure
+    */
     @IBAction func addInfoAction(_ sender: Any) {
         let ayo = firstNameOutlet.validateName()
         let lmaoo = lastNameOutlet.validateName()

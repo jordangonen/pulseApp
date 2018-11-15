@@ -39,6 +39,11 @@ class OnboardingController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    /**
+     Creates and populates onboarding slides from nib (OnboardingPage.xib)
+     
+     - Returns: [OnboardingSlide]
+    */
     func loadSlides() -> [OnboardingSlide] {
         let slide0 = Bundle.main.loadNibNamed("OnboardingPage", owner: self, options: nil)?.first as! OnboardingSlide
         slide0.image.image = UIImage(named: "newcelly")
