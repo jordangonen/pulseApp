@@ -27,6 +27,10 @@
 		AF3CD4C021961B6800A00EDA /* LoggedIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3CD4BF21961B6800A00EDA /* LoggedIn.storyboard */; };
 		AF3CD4C221961BA800A00EDA /* LoggedInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CD4C121961BA800A00EDA /* LoggedInController.swift */; };
 		AF3CD4C4219652BC00A00EDA /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CD4C3219652BC00A00EDA /* Messages.swift */; };
+		AF4B56F6219E2712000E6059 /* CalendarScroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF4B56F5219E2712000E6059 /* CalendarScroller.xib */; };
+		AF4B56F8219E2C4D000E6059 /* TESTLoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B56F7219E2C4D000E6059 /* TESTLoggedIn.swift */; };
+		AF4B56FA219E2C5A000E6059 /* TESTCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4B56F9219E2C5A000E6059 /* TESTCalendarView.swift */; };
+		AF4B56FC219E3B49000E6059 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF4B56FB219E3B49000E6059 /* CalendarCell.xib */; };
 		AF4D572221952281005D5F38 /* uiview.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D572121952281005D5F38 /* uiview.swift */; };
 		AF4D572C219542BF005D5F38 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D572B219542BF005D5F38 /* OnboardingController.swift */; };
 		AF4D572E2195464D005D5F38 /* OnboardingPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF4D572D2195464D005D5F38 /* OnboardingPage.xib */; };
@@ -85,6 +89,10 @@
 		AF3CD4BF21961B6800A00EDA /* LoggedIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoggedIn.storyboard; sourceTree = "<group>"; };
 		AF3CD4C121961BA800A00EDA /* LoggedInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInController.swift; sourceTree = "<group>"; };
 		AF3CD4C3219652BC00A00EDA /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		AF4B56F5219E2712000E6059 /* CalendarScroller.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarScroller.xib; sourceTree = "<group>"; };
+		AF4B56F7219E2C4D000E6059 /* TESTLoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TESTLoggedIn.swift; sourceTree = "<group>"; };
+		AF4B56F9219E2C5A000E6059 /* TESTCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TESTCalendarView.swift; sourceTree = "<group>"; };
+		AF4B56FB219E3B49000E6059 /* CalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
 		AF4D572121952281005D5F38 /* uiview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uiview.swift; sourceTree = "<group>"; };
 		AF4D572B219542BF005D5F38 /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
 		AF4D572D2195464D005D5F38 /* OnboardingPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingPage.xib; sourceTree = "<group>"; };
@@ -209,8 +217,11 @@
 			children = (
 				AF4D572F21954850005D5F38 /* OnboardingSlide.swift */,
 				AFAA9BE72198082600DA3B24 /* CalendarCell.swift */,
+				AF4B56F9219E2C5A000E6059 /* TESTCalendarView.swift */,
 				AF726C76219CDCE800A9D5FC /* DayView.swift */,
 				AF4D572D2195464D005D5F38 /* OnboardingPage.xib */,
+				AF4B56F5219E2712000E6059 /* CalendarScroller.xib */,
+				AF4B56FB219E3B49000E6059 /* CalendarCell.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -220,6 +231,7 @@
 			children = (
 				AF36FA602194F6E10094E3CC /* AuthNavigationController.swift */,
 				AF4D572B219542BF005D5F38 /* OnboardingController.swift */,
+				AF4B56F7219E2C4D000E6059 /* TESTLoggedIn.swift */,
 				AF36FA652194FD440094E3CC /* SignUpController.swift */,
 				AF3CD4B72196057800A00EDA /* OnboardingProfileController.swift */,
 				AF36FA672194FD5C0094E3CC /* LogInController.swift */,
@@ -338,12 +350,14 @@
 			files = (
 				AF36FA462194ED050094E3CC /* LaunchScreen.storyboard in Resources */,
 				AF3CD4B62196000700A00EDA /* OnboardingTest.storyboard in Resources */,
+				AF4B56F6219E2712000E6059 /* CalendarScroller.xib in Resources */,
 				AF3CD4C021961B6800A00EDA /* LoggedIn.storyboard in Resources */,
 				AF726C70219BA06000A9D5FC /* Settings.storyboard in Resources */,
 				AF4D572E2195464D005D5F38 /* OnboardingPage.xib in Resources */,
 				AF36FA5C2194ED6E0094E3CC /* GoogleService-Info.plist in Resources */,
 				AF36FA432194ED050094E3CC /* Assets.xcassets in Resources */,
 				AF36FA412194ED020094E3CC /* Main.storyboard in Resources */,
+				AF4B56FC219E3B49000E6059 /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +458,7 @@
 				AF726C77219CDCE800A9D5FC /* DayView.swift in Sources */,
 				AFAA9BE82198082600DA3B24 /* CalendarCell.swift in Sources */,
 				AF3CD4C4219652BC00A00EDA /* Messages.swift in Sources */,
+				AF4B56F8219E2C4D000E6059 /* TESTLoggedIn.swift in Sources */,
 				AF36FA662194FD440094E3CC /* SignUpController.swift in Sources */,
 				AF36FA682194FD5C0094E3CC /* LogInController.swift in Sources */,
 				AFAA9BE42197FD8600DA3B24 /* LogDay.swift in Sources */,
@@ -463,6 +478,7 @@
 				AF4D572C219542BF005D5F38 /* OnboardingController.swift in Sources */,
 				AF3CD4C221961BA800A00EDA /* LoggedInController.swift in Sources */,
 				AF726C72219BA40E00A9D5FC /* SettingsController.swift in Sources */,
+				AF4B56FA219E2C5A000E6059 /* TESTCalendarView.swift in Sources */,
 				AF36FA6A219506D90094E3CC /* textfield.swift in Sources */,
 				AF4D573021954850005D5F38 /* OnboardingSlide.swift in Sources */,
 			);

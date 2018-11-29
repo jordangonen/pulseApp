@@ -38,7 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //
         
         if Auth.auth().currentUser != nil {
-            let v = UINavigationController(rootViewController: UIStoryboard(name: "LoggedIn", bundle: nil).instantiateViewController(withIdentifier: "loggedIn"))
+            //let v = UINavigationController(rootViewController: UIStoryboard(name: "LoggedIn", bundle: nil).instantiateViewController(withIdentifier: "loggedIn"))
+            let v = UIStoryboard(name: "LoggedIn", bundle: nil).instantiateViewController(withIdentifier: "loggedInNavigationController") as! UINavigationController
             v.setNavigationBarHidden(true, animated: false)
             UIView.transition(with: self.window!, duration: 0.5, options: .transitionFlipFromLeft, animations: {
                 self.window?.rootViewController = v

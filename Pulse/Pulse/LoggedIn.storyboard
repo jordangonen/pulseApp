@@ -17,12 +17,44 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vue-CX-U3Q" kind="relationship" relationship="rootViewController" id="7Pz-kY-Ui7"/>
+                        <segue destination="WJv-aE-rqm" kind="relationship" relationship="rootViewController" id="l3i-cx-oPh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l9v-HU-JZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1639" y="-154"/>
+        </scene>
+        <!--Logged In-->
+        <scene sceneID="Trt-V8-BqC">
+            <objects>
+                <viewController id="WJv-aE-rqm" customClass="TESTLoggedIn" customModule="Pulse" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yin-oU-9hj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBY-Bs-6y4">
+                                <rect key="frame" x="0.0" y="193.5" width="375" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="atX-YW-B8o"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tBY-Bs-6y4" firstAttribute="centerY" secondItem="c43-OC-jZh" secondAttribute="centerY" id="E5g-Xs-xUi"/>
+                            <constraint firstItem="tBY-Bs-6y4" firstAttribute="leading" secondItem="c43-OC-jZh" secondAttribute="leading" id="Tci-4C-W4Q"/>
+                            <constraint firstItem="c43-OC-jZh" firstAttribute="trailing" secondItem="tBY-Bs-6y4" secondAttribute="trailing" id="asG-ZE-tyO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="c43-OC-jZh"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GHd-Yf-hoW"/>
+                    <connections>
+                        <outlet property="scrollView" destination="tBY-Bs-6y4" id="Vfh-c3-fET"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ogM-Vk-sro" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-727" y="-928"/>
         </scene>
         <!--Logged In Controller-->
         <scene sceneID="yEp-n4-0Dd">

@@ -19,6 +19,13 @@ struct User: Codable {
         return Auth.auth().currentUser?.uid
     }
     
+    static func removeAllData() {
+        User.firstName = nil
+        User.lastName = nil
+        User.lastLog = nil
+        User.totalLogs = nil
+    }
+    
     /**
      Gets user logs from the specified year and month.
      

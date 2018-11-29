@@ -22,6 +22,7 @@ class SettingsController: UIViewController {
             try Auth.auth().signOut()
             self.view.screenLoading()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                User.removeAllData()
                 self.view.screenLoaded()
                 let v = UINavigationController(rootViewController: UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loggedOut"))
                 v.setNavigationBarHidden(true, animated: false)
