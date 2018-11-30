@@ -35,10 +35,13 @@ class SettingsController: UIViewController {
         
     }
     @IBAction func resetPassword(_ sender: Any) {
+        
         var user = Auth.auth().currentUser;
         var name: String;
         var email: String;
         email = (user?.email)!;
+        var name2: String;
+
         
 
         let alert = UIAlertController(title: "Password Reset", message: "Check your email. A password reset link will be sent.", preferredStyle: .alert)
