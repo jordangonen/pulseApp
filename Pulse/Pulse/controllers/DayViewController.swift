@@ -8,12 +8,15 @@
 
 import UIKit
 
-class DayViewController: UIViewController, UIScrollViewDelegate{
+class DayViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate{
     
     var backgroundColor: UIColor!
     @IBOutlet weak var viewer: UIView!
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
+    
+    @IBOutlet var tableView: UITableView!
+    
     
     var maxTemp: String!
     var minTemp: String!
