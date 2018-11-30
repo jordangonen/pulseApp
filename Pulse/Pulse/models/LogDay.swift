@@ -12,7 +12,7 @@ import UIKit
 class LogDay: Codable {
     
     var moods: [Mood]! = [Mood]()
-    var weather: Weather?
+//    var weather: Weather?
     var steps: Int?
     var avg: Double {
         var avg = Double(0)

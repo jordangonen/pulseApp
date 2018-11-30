@@ -9,16 +9,18 @@
 import Foundation
 import UIKit
 
-class Weather: Codable {
+class Weather: Decodable {
     
-    var lowTemp: Int!
-    var highTemp: Int!
+    var max_temp: Double!
+    var min_temp: Double!
+    var data: [weatherData]
     var type: String!
     var imageString: String?
     
-    init(l: Int, h: Int, t: String) {
-        self.lowTemp = l
-        self.highTemp = h
+    init(l: Double, h: Double, d: [weatherData], t: String) {
+        self.max_temp = h
+        self.min_temp = l
+        self.data = d
         self.type = t
     }
 }

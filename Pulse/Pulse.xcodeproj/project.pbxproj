@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1287013321B1C52300B361D2 /* weatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1287013221B1C52300B361D2 /* weatherData.swift */; };
+		1287013521B1C54700B361D2 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1287013421B1C54700B361D2 /* DayViewController.swift */; };
+		1287013721B1C58800B361D2 /* DayView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1287013621B1C58800B361D2 /* DayView.storyboard */; };
 		1357D21B70A13A6BD594980F /* Pods_Pulse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D028834D90E6B177767C9A /* Pods_Pulse.framework */; };
 		AF36FA3C2194ED020094E3CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36FA3B2194ED020094E3CC /* AppDelegate.swift */; };
 		AF36FA412194ED020094E3CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF36FA3F2194ED020094E3CC /* Main.storyboard */; };
@@ -56,6 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1287013221B1C52300B361D2 /* weatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherData.swift; sourceTree = "<group>"; };
+		1287013421B1C54700B361D2 /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
+		1287013621B1C58800B361D2 /* DayView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DayView.storyboard; sourceTree = "<group>"; };
 		28D028834D90E6B177767C9A /* Pods_Pulse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pulse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C94951F8C93A556A8464593 /* Pods-Pulse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pulse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pulse/Pods-Pulse.debug.xcconfig"; sourceTree = "<group>"; };
 		73882C485E0B358E2807A93B /* Pods-PulseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PulseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PulseTests/Pods-PulseTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +178,7 @@
 				AF36FA5D2194F55A0094E3CC /* models */,
 				AF36FA3B2194ED020094E3CC /* AppDelegate.swift */,
 				AF36FA3F2194ED020094E3CC /* Main.storyboard */,
+				1287013621B1C58800B361D2 /* DayView.storyboard */,
 				AF3CD4B52196000700A00EDA /* OnboardingTest.storyboard */,
 				AF3CD4BF21961B6800A00EDA /* LoggedIn.storyboard */,
 				AF726C6F219BA06000A9D5FC /* Settings.storyboard */,
@@ -198,6 +205,7 @@
 				AF3CD4BD2196176E00A00EDA /* User.swift */,
 				AFAA9BE32197FD8600DA3B24 /* LogDay.swift */,
 				AFAA9BE52197FDDA00DA3B24 /* Weather.swift */,
+				1287013221B1C52300B361D2 /* weatherData.swift */,
 				AFAA9BE12197FA4100DA3B24 /* Mood.swift */,
 				AF3CD4C3219652BC00A00EDA /* Messages.swift */,
 			);
@@ -224,6 +232,7 @@
 				AF3CD4B72196057800A00EDA /* OnboardingProfileController.swift */,
 				AF36FA672194FD5C0094E3CC /* LogInController.swift */,
 				AF3CD4C121961BA800A00EDA /* LoggedInController.swift */,
+				1287013421B1C54700B361D2 /* DayViewController.swift */,
 				AF726C71219BA40E00A9D5FC /* SettingsController.swift */,
 				AF3CD4B32195F38200A00EDA /* LandingController.swift */,
 			);
@@ -337,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF36FA462194ED050094E3CC /* LaunchScreen.storyboard in Resources */,
+				1287013721B1C58800B361D2 /* DayView.storyboard in Resources */,
 				AF3CD4B62196000700A00EDA /* OnboardingTest.storyboard in Resources */,
 				AF3CD4C021961B6800A00EDA /* LoggedIn.storyboard in Resources */,
 				AF726C70219BA06000A9D5FC /* Settings.storyboard in Resources */,
@@ -446,6 +456,7 @@
 				AF3CD4C4219652BC00A00EDA /* Messages.swift in Sources */,
 				AF36FA662194FD440094E3CC /* SignUpController.swift in Sources */,
 				AF36FA682194FD5C0094E3CC /* LogInController.swift in Sources */,
+				1287013321B1C52300B361D2 /* weatherData.swift in Sources */,
 				AFAA9BE42197FD8600DA3B24 /* LogDay.swift in Sources */,
 				AF4D572221952281005D5F38 /* uiview.swift in Sources */,
 				AF726C6D219B95ED00A9D5FC /* date.swift in Sources */,
@@ -456,6 +467,7 @@
 				AFAA9BE62197FDDA00DA3B24 /* Weather.swift in Sources */,
 				AF3CD4BE2196176E00A00EDA /* User.swift in Sources */,
 				AF36FA642194FACD0094E3CC /* color.swift in Sources */,
+				1287013521B1C54700B361D2 /* DayViewController.swift in Sources */,
 				AF726C75219BA9DD00A9D5FC /* timer.swift in Sources */,
 				AFAA9BE22197FA4100DA3B24 /* Mood.swift in Sources */,
 				AF36FA3C2194ED020094E3CC /* AppDelegate.swift in Sources */,
