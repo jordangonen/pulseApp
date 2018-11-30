@@ -27,7 +27,7 @@ class OnboardingController: UIViewController, UIScrollViewDelegate {
         setupScrollView()
         pageControl.numberOfPages = slides.count
         pageControl.currentPage = 0
-        view.bringSubviewToFront(pageControl)
+        view.bringSubview(toFront: pageControl)
     }
     
     func setupScrollView() {
