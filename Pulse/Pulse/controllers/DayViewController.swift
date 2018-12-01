@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DayViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate{
+class DayViewController: UIViewController, UIScrollViewDelegate, UITableViewDataSource{
     
     var backgroundColor: UIColor!
     @IBOutlet weak var viewer: UIView!
@@ -28,6 +28,20 @@ class DayViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
         viewer.backgroundColor = backgroundColor
         maxTempLabel.text = maxTemp
         minTempLabel.text = minTemp
+        tableView.dataSource = self
+
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier")!
+    
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
     }
     
     @IBAction func backButton(_ sender: Any) {
