@@ -215,24 +215,27 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         
         let nextDay = "\(currCal.component(.year, from: currDate))" + "-" + "\(currCal.component(.month, from: currDate))" + "-" + "\(indexPath.row-2)"
         
-        
+        if(indexPath.row-3 > currCal.component(.day, from: currDate)) {
+            print ("date out of range")
+            return
+        }
+            
+        else {
+
         do{
             let url = URL(string: "https://api.weatherbit.io/v2.0/history/daily?city=Raleigh,NC&start_date=" + "\(selectedDate)" + "&end_date=" + "\(nextDay)" + "&units=I&key=0d89f91dbfe44f9591d38429d21110e3")
             
             let info = try Data(contentsOf: url!)
             self.weatherResults = try! JSONDecoder().decode(Weather.self, from: info)
-//            print(weatherResults?.data)
         }
         catch{
             self.weatherResults = nil
         }
         
         let data = weatherResults?.data
-        let maxTempValue = "High Temp:" + "\(data![0].max_temp!)"
-        let minTempValue = "Low Temp:" + "\(data![0].min_temp!)"
+        let maxTempValue = "High Temp: " + "\(data![0].max_temp!)" + "°"
+        let minTempValue = "Low Temp: " + "\(data![0].min_temp!)" + "°"
         
-        //        guard let maxTemp = weatherResults?.data else {return}
-        //        print(maxTemp)
         
         let storyboard = UIStoryboard(name: "DayView", bundle: nil)
         
@@ -248,6 +251,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         
         self.navigationController?.pushViewController(vc, animated: true)
         
+        }
     }
     
 }
