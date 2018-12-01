@@ -31,6 +31,9 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     var numDaysInMonth: Int {
         return (currCal.range(of: .day, in: .month, for: currDate)?.count)!
     }
+    
+    var dayArr: [Mood] = []
+
     var weatherResults: Weather? = nil
     
     // e.g. if the first of the month is a Thursday, startingWeekdayIndexed = 4
@@ -124,6 +127,13 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    func fillDayArr(day: Int) -> [Mood] {
+        dayArr = (monthData[day]?.moods!)!
+        return dayArr
+    }
+    
+    
+    
     @objc func registerMood(_ sender: UIButton) {
         let m = Mood(sender.tag - 60, Date())
         self.view.screenLoading()
@@ -146,6 +156,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
                 // TODO: alert update error
             }
         })
+        
     }
     
     func setupButtons() {
@@ -204,6 +215,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         
         let nextDay = "\(currCal.component(.year, from: currDate))" + "-" + "\(currCal.component(.month, from: currDate))" + "-" + "\(indexPath.row-2)"
         
+        
         do{
             let url = URL(string: "https://api.weatherbit.io/v2.0/history/daily?city=Raleigh,NC&start_date=" + "\(selectedDate)" + "&end_date=" + "\(nextDay)" + "&units=I&key=0d89f91dbfe44f9591d38429d21110e3")
             
@@ -216,8 +228,8 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
         let data = weatherResults?.data
-        let maxTempValue = "\(data![0].max_temp!)"
-        let minTempValue = "\(data![0].min_temp!)"
+        let maxTempValue = "High Temp:" + "\(data![0].max_temp!)"
+        let minTempValue = "Low Temp:" + "\(data![0].min_temp!)"
         
         //        guard let maxTemp = weatherResults?.data else {return}
         //        print(maxTemp)
@@ -228,6 +240,11 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         vc.backgroundColor = UIColor.clear
         vc.maxTemp = maxTempValue
         vc.minTemp = minTempValue
+        
+//        print(indexPath.row-3)
+        vc.moodArr = fillDayArr(day: indexPath.row-3)
+
+        
         
         self.navigationController?.pushViewController(vc, animated: true)
         
