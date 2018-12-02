@@ -59,9 +59,9 @@ class OnboardingController: UIViewController, UIScrollViewDelegate {
         slide1.subtitle.text = "We send you periodic push notifications so you can record how you're feeling"
         
         let slide2 = Bundle.main.loadNibNamed("OnboardingPage", owner: self, options: nil)?.first as! OnboardingSlide
-        slide2.image.image = UIImage(named: "health")
-        slide2.title.text = "Enable HealthKit"
-        slide2.subtitle.text = "Get insights into how your daily activity impacts your mood"
+        slide2.image.image = UIImage(named: "weather")
+        slide2.title.text = "Enable Location Services"
+        slide2.subtitle.text = "Get insights into how weather impacts your mood"
         
         let slide3 = Bundle.main.loadNibNamed("OnboardingPage", owner: self, options: nil)?.first as! OnboardingSlide
         slide3.image.image = UIImage(named: "balloons")
