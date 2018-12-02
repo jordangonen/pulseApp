@@ -41,7 +41,7 @@ struct User: Codable {
                     let day = d.data()["day"] as! Int
                     let value = d.data()["value"] as! Int
                     let interval = d.data()["dateTime"] as! Int
-                    let mood = Mood(value, Date(timeIntervalSince1970: TimeInterval(interval)))
+                    let mood = Mood(value, Date(timeIntervalSince1970: TimeInterval(interval)), "85254")
                     if something[day] != nil {
                         something[day]!.moods.append(mood)
                     } else {

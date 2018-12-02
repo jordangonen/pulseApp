@@ -20,10 +20,12 @@ class DayViewController: UIViewController, UIScrollViewDelegate, UITableViewData
     @IBOutlet var tableView: UITableView!
     
     @IBOutlet var dayTitle: UINavigationItem!
+    @IBOutlet var zipLabel: UILabel!
     
     
     var maxTemp: String!
     var minTemp: String!
+    var zip: String! 
     var rows: Int!
     
     var moodArr: [Mood] = []
@@ -37,25 +39,28 @@ class DayViewController: UIViewController, UIScrollViewDelegate, UITableViewData
         viewer.backgroundColor = backgroundColor
         maxTempLabel.text = maxTemp
         minTempLabel.text = minTemp
-        tableView.dataSource = self
-        print(moodArr)
-        
-        let date = moodArr[0].dateTime!
-        let dateString = ("\(date)")
+        zipLabel.text = "Zip Code: " + "\(zip!)"
 
+        tableView.dataSource = self
         
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
-        let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "MMM d"
-        
-        if let date = dateFormatterGet.date(from: dateString) {
-            dayTitle.title = dateFormatterPrint.string(from: date)
-            print(dateFormatterPrint.string(from: date))
-        } else {
-            print("There was an error decoding the string")
+        if moodArr.count > 0 {
+            let date = moodArr[0].dateTime!
+            let dateString = ("\(date)")
+            
+            
+            let dateFormatterGet = DateFormatter()
+            dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "MMM d"
+            
+            if let date = dateFormatterGet.date(from: dateString) {
+                dayTitle.title = dateFormatterPrint.string(from: date)
+                print(dateFormatterPrint.string(from: date))
+            } else {
+                print("There was an error decoding the string")
+            }
+            
         }
-        
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +93,6 @@ class DayViewController: UIViewController, UIScrollViewDelegate, UITableViewData
 
         if let date = dateFormatterGet.date(from: timeString) {
             cleanDate = dateFormatterPrint.string(from: date)
-            print(dateFormatterPrint.string(from: date))
         } else {
             print("There was an error decoding the string")
         }

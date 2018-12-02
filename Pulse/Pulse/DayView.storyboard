@@ -64,6 +64,13 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhy-8G-r6P">
+                                        <rect key="frame" x="114" y="73" width="146" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -77,6 +84,7 @@
                         <outlet property="minTempLabel" destination="92N-fE-66n" id="ZFX-8q-Wno"/>
                         <outlet property="tableView" destination="fFS-Ww-M6X" id="bmJ-dS-f5y"/>
                         <outlet property="viewer" destination="jAE-FK-lcS" id="Ms2-vK-AvO"/>
+                        <outlet property="zipLabel" destination="bhy-8G-r6P" id="34L-Nt-tRN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OYC-Sz-Qmb" userLabel="First Responder" sceneMemberID="firstResponder"/>

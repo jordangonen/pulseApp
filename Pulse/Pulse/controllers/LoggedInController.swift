@@ -9,8 +9,12 @@
 import Foundation
 import UIKit
 import Firebase
+import CoreLocation
 
-class LoggedInController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class LoggedInController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate  {
+    
+    var postal = "85254"
+
     
     // outlet variables
     @IBOutlet var dayHeadingStack: UIStackView!
@@ -24,14 +28,156 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet var totalLogs: UILabel!
     @IBOutlet var lastLogLabel: UILabel!
     
+    
+    
+    let locationMgr = CLLocationManager()
+
+    
+//    @IBAction func fetchCurrLocation(_ sender: Any) {
+//        let authStatus = CLLocationManager.authorizationStatus()
+//        if authStatus == .denied || authStatus == .restricted {
+//            print("\nlocation restricted")
+//            presentLocationNotification()
+//            return
+//        } else if authStatus == .notDetermined {
+//            print("\nlocation not determined")
+//            locationMgr.requestWhenInUseAuthorization()
+//            return
+//        } else {
+//            print("\nstarting update location...")
+//            locationMgr.delegate = self
+//            locationMgr.startUpdatingLocation()
+//        }
+//        return
+//    }
+    func fetchCurrLocation() {
+        let authStatus = CLLocationManager.authorizationStatus()
+        if authStatus == .denied || authStatus == .restricted {
+            print("\nlocation restricted")
+            presentLocationNotification()
+            return
+        } else if authStatus == .notDetermined {
+            print("\nlocation not determined")
+            locationMgr.requestWhenInUseAuthorization()
+            return
+        } else {
+            print("\nstarting update location...")
+            locationMgr.delegate = self
+            locationMgr.startUpdatingLocation()
+        }
+        return
+    }
+    
+    func presentLocationNotification() {
+        let alert = UIAlertController(title: "Location Services Disabled", message: "To view local weather, change your preferences.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("\nstarting location manager...")
+        let lastLoc = locations.last!
+        convertLocPlacemark(location: lastLoc) { (placeMarker) -> () in
+            let postCode = placeMarker?.postalCode
+            print(String(postCode!))
+            self.setCode(postCode: postCode!)
+
+        }
+    }
+    func setCode(postCode: String) {
+        postal = postCode
+        
+//
+//        let alert = UIAlertController(title: "Updated Current Location", message: "Your Zip Code is \(String(postCode))", preferredStyle: .alert)
+//
+//        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+//
+//        self.present(alert, animated: true)
+
+        
+        print(postal)
+    }
+    
+    func convertLocPlacemark(location: CLLocation, completionHandler: @escaping (CLPlacemark?) -> ()) {
+        print("\nconversion function successfully called")
+        let geo = CLGeocoder()
+        geo.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
+            if error == nil {
+                print("\nconversion received no error")
+                completionHandler(placemarks?[0])
+            } else {
+                print("\nconversion received error: \(String(describing: error))")
+                completionHandler(nil)
+            }
+        })
+        locationMgr.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        let alert = UIAlertController(title: "Uh-oh", message: "Something went wrong while trying to retrieve your location.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        let retryAction = UIAlertAction(title: "Retry", style: .default, handler: {(action: UIAlertAction!) in
+            alert.dismiss(animated: true, completion: nil)
+//            self.getTaxInfo(nil)
+        })
+        alert.addAction(retryAction)
+        present(alert, animated: true, completion: nil)
+    }
+
+
+    
+    
+    
     // data management variables
     var monthData = [Int: LogDay]()
     var currDate = Date()
+    var currMonth = Date()
     var currCal = Calendar.current
     var numDaysInMonth: Int {
         return (currCal.range(of: .day, in: .month, for: currDate)?.count)!
     }
     
+    @IBAction func nextButton(_ sender: Any) {
+        currDate = currCal.date(byAdding: .month, value: +1, to: currDate)!
+        reloadLabels()
+        self.calendarJawn.reloadData()
+     
+        self.view.screenLoading()
+
+        let month = currCal.component(.month, from: currDate)
+        let year = currCal.component(.year, from: currDate)
+        User.moodsFromMonth(year, month) { s in
+            guard let x: [Int: LogDay] = s else { return }
+            self.monthData = x
+            self.calendarJawn.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.view.screenLoaded()
+            }
+        }
+        
+
+    }
+    
+    @IBAction func prevButton(_ sender: Any) {
+        currDate = currCal.date(byAdding: .month, value: -1, to: currDate)!
+        reloadLabels()
+        self.calendarJawn.reloadData()
+        self.view.screenLoading()
+
+        let month = currCal.component(.month, from: currDate)
+        let year = currCal.component(.year, from: currDate)
+        User.moodsFromMonth(year, month) { s in
+            guard let x: [Int: LogDay] = s else { return }
+            self.monthData = x
+            self.calendarJawn.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.view.screenLoaded()
+            }
+        }
+      
+
+    }
+
     var dayArr: [Mood] = []
 
     var weatherResults: Weather? = nil
@@ -59,6 +205,12 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         calendarJawn.dataSource = self
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         // initialize periodic refreshes
+        
+        fetchCurrLocation()
+        
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            locationMgr.requestWhenInUseAuthorization()
+        }
         
     }
     
@@ -117,6 +269,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
             completion()
             return
         }
+        
         let month = currCal.component(.month, from: currDate)
         let year = currCal.component(.year, from: currDate)
         User.moodsFromMonth(year, month) { s in
@@ -128,14 +281,20 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func fillDayArr(day: Int) -> [Mood] {
-        dayArr = (monthData[day]?.moods!)!
+        if monthData[day] != nil {
+            dayArr = (monthData[day]?.moods!)!
+            return dayArr
+        }
+        dayArr = []
         return dayArr
+        
     }
     
-    
-    
     @objc func registerMood(_ sender: UIButton) {
-        let m = Mood(sender.tag - 60, Date())
+        currDate = Date()
+        print("registering this code" + "\(postal)")
+        let m = Mood(sender.tag - 60, Date(), postal)
+        
         self.view.screenLoading()
         m.upload({ b in
             if !b {
@@ -156,8 +315,9 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
                 // TODO: alert update error
             }
         })
-        
     }
+    
+    
     
     func setupButtons() {
         sadButtonOutlet.imageView?.contentMode = .scaleAspectFit
@@ -181,7 +341,6 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     
-    
     // Notes for whichever mf has to implement pagination on this guy:
     // replace mainCalendarView with a UIScrollView
     // or like use the numberOfSectionsFor function
@@ -199,31 +358,56 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         let cell = calendarJawn.dequeueReusableCell(withReuseIdentifier: "calendarDay", for: indexPath) as! CalendarCell
         let lastDayIndex = startingWeekdayIndexed + numDaysInMonth - 1
         cell.backgroundColor = (startingWeekdayIndexed ... lastDayIndex).contains(indexPath.row) ? UIColor(rgb: 0xe7e7e7) : UIColor(rgb: 0xf0f0f0)
-        guard let day = self.monthData[indexPath.row - 3] else { return cell }
+        guard let day = self.monthData[indexPath.row-(startingWeekdayIndexed-1)] else { return cell }
+        
         cell.backgroundColor = day.color()
         cell.log = day
         return cell
     }
+    var tempPostal = ""
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
 //        guard let currCell = collectionView.cellForItem(at: indexPath) as? CalendarCell else { return }
 //        if let logDay = currCell.log {
 //            
 //        }
         
-        let selectedDate = "\(currCal.component(.year, from: currDate))" + "-" + "\(currCal.component(.month, from: currDate))" + "-" + "\(indexPath.row-3)"
+        let selectedDate = "\(currCal.component(.year, from: currDate))" + "-" + "\(currCal.component(.month, from: currDate))" + "-" + "\(indexPath.row-(startingWeekdayIndexed-1))"
         
-        let nextDay = "\(currCal.component(.year, from: currDate))" + "-" + "\(currCal.component(.month, from: currDate))" + "-" + "\(indexPath.row-2)"
+        let nextDay = "\(currCal.component(.year, from: currDate))" + "-" + "\(currCal.component(.month, from: currDate))" + "-" + "\(indexPath.row-(startingWeekdayIndexed-2))"
         
-        if(indexPath.row-3 > currCal.component(.day, from: currDate)) {
+        let m = currCal.component(.month, from: currDate)
+
+        
+        if((indexPath.row-(startingWeekdayIndexed-1) > currCal.component(.day, from: currDate)) && currCal.component(.month, from: currMonth) == m) {
+            
             print ("date out of range")
             return
         }
-            
+        
+        print(indexPath.row)
+        print((indexPath.row-(startingWeekdayIndexed-1)))
+        print((indexPath.row-(startingWeekdayIndexed)))
+        
+        if((indexPath.row-(startingWeekdayIndexed))<0) {
+            print("heller")
+            return
+        }
+
+     
         else {
 
         do{
-            let url = URL(string: "https://api.weatherbit.io/v2.0/history/daily?city=Raleigh,NC&start_date=" + "\(selectedDate)" + "&end_date=" + "\(nextDay)" + "&units=I&key=0d89f91dbfe44f9591d38429d21110e3")
+        
+        fetchCurrLocation()
+
+         tempPostal = (self.monthData[indexPath.row-(startingWeekdayIndexed-1)]?.moods[0].zipCode)!
+        print("the postal is " + "\(tempPostal)")
+            
+            let url = URL(string: "https://api.weatherbit.io/v2.0/history/daily?postal_code=" + "\(tempPostal)" + "&country=US&start_date=" + "\(selectedDate)" + "&end_date=" + "\(nextDay)" + "&units=I&key=0d89f91dbfe44f9591d38429d21110e3")
+            
+            print(url!)
             
             let info = try Data(contentsOf: url!)
             self.weatherResults = try! JSONDecoder().decode(Weather.self, from: info)
@@ -233,19 +417,21 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
         let data = weatherResults?.data
+        
+            
         let maxTempValue = "High Temp: " + "\(data![0].max_temp!)" + "°"
         let minTempValue = "Low Temp: " + "\(data![0].min_temp!)" + "°"
-        
-        
+
+//
         let storyboard = UIStoryboard(name: "DayView", bundle: nil)
         
         let vc = storyboard.instantiateViewController(withIdentifier: "dayview") as! DayViewController
         vc.backgroundColor = UIColor.clear
         vc.maxTemp = maxTempValue
         vc.minTemp = minTempValue
+        vc.zip = tempPostal
         
-//        print(indexPath.row-3)
-        vc.moodArr = fillDayArr(day: indexPath.row-3)
+        vc.moodArr = fillDayArr(day: indexPath.row-(startingWeekdayIndexed-1))
 
         
         
