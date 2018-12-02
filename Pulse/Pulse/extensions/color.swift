@@ -15,7 +15,8 @@ extension UIColor {
         static var green : UIColor { return UIColor(rgb: 0x38D39F) }
         static var lightGreen : UIColor { return UIColor(rgb: 0x13F191) }
         static var yellow : UIColor { return UIColor(rgb: 0xFFD037)}
-        static var red : UIColor { return UIColor(rgb: 0xEB5757) }
+        static var red : UIColor { return
+            UIColor(rgb: 0xEB5757) }
     }
     
     convenience init(red: Int, green: Int, blue: Int) {
@@ -27,6 +28,7 @@ extension UIColor {
     }
     
     convenience init(rgb: Int) {
+        
         self.init(
             red: (rgb >> 16) & 0xFF,
             green: (rgb >> 8) & 0xFF,

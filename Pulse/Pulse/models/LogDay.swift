@@ -36,7 +36,7 @@ class LogDay: Codable {
         case 2...4:
             return UIColor.Pulse.green.withAlphaComponent(affa)
         default:
-            return UIColor.black
+            return UIColor.red
         }
     }
     

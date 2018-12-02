@@ -13,8 +13,7 @@ import CoreLocation
 
 class LoggedInController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate  {
     
-    var postal = "85254"
-
+    var postal = ""
     
     // outlet variables
     @IBOutlet var dayHeadingStack: UIStackView!
@@ -29,27 +28,8 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet var lastLogLabel: UILabel!
     
     
-    
     let locationMgr = CLLocationManager()
 
-    
-//    @IBAction func fetchCurrLocation(_ sender: Any) {
-//        let authStatus = CLLocationManager.authorizationStatus()
-//        if authStatus == .denied || authStatus == .restricted {
-//            print("\nlocation restricted")
-//            presentLocationNotification()
-//            return
-//        } else if authStatus == .notDetermined {
-//            print("\nlocation not determined")
-//            locationMgr.requestWhenInUseAuthorization()
-//            return
-//        } else {
-//            print("\nstarting update location...")
-//            locationMgr.delegate = self
-//            locationMgr.startUpdatingLocation()
-//        }
-//        return
-//    }
     func fetchCurrLocation() {
         let authStatus = CLLocationManager.authorizationStatus()
         if authStatus == .denied || authStatus == .restricted {
@@ -87,15 +67,13 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     func setCode(postCode: String) {
         postal = postCode
         
-//
+
 //        let alert = UIAlertController(title: "Updated Current Location", message: "Your Zip Code is \(String(postCode))", preferredStyle: .alert)
 //
 //        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
 //
 //        self.present(alert, animated: true)
 
-        
-        print(postal)
     }
     
     func convertLocPlacemark(location: CLLocation, completionHandler: @escaping (CLPlacemark?) -> ()) {
@@ -127,7 +105,6 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
 
     
     
-    
     // data management variables
     var monthData = [Int: LogDay]()
     var currDate = Date()
@@ -146,7 +123,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
 
         let month = currCal.component(.month, from: currDate)
         let year = currCal.component(.year, from: currDate)
-        User.moodsFromMonth(year, month) { s in
+        User.moodsFromMonth(year, month, postal) { s in
             guard let x: [Int: LogDay] = s else { return }
             self.monthData = x
             self.calendarJawn.reloadData()
@@ -163,10 +140,10 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         reloadLabels()
         self.calendarJawn.reloadData()
         self.view.screenLoading()
-
+        
         let month = currCal.component(.month, from: currDate)
         let year = currCal.component(.year, from: currDate)
-        User.moodsFromMonth(year, month) { s in
+        User.moodsFromMonth(year, month, postal) { s in
             guard let x: [Int: LogDay] = s else { return }
             self.monthData = x
             self.calendarJawn.reloadData()
@@ -272,7 +249,8 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         
         let month = currCal.component(.month, from: currDate)
         let year = currCal.component(.year, from: currDate)
-        User.moodsFromMonth(year, month) { s in
+        
+        User.moodsFromMonth(year, month, postal) { s in
             completion()
             guard let x: [Int: LogDay] = s else { return }
             self.monthData = x
@@ -292,9 +270,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @objc func registerMood(_ sender: UIButton) {
         currDate = Date()
-        print("registering this code" + "\(postal)")
         let m = Mood(sender.tag - 60, Date(), postal)
-        
         self.view.screenLoading()
         m.upload({ b in
             if !b {
@@ -303,20 +279,24 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         }, { b in
             if b {
                 let dayInt = self.currCal.component(.day, from: self.currDate)
-                if let d = self.monthData[dayInt] {
-                    d.moods.append(m)
-                } else {
-                    let d = LogDay()
-                    d.moods.append(m)
-                    self.monthData[dayInt] = d
-                }
+                let d = self.monthData[dayInt]
+                d?.moods.append(m)
+                
+//                if let d = self.monthData[dayInt] {
+//                    print("INHEREEEE")
+//                    d.moods.append(m)
+//                } else {
+//                    let d = LogDay()
+//                    print(d)
+//                    d.moods.append(m)
+//                    self.monthData[dayInt] = d
+//                }
                 self.reloadLabels()
             } else {
                 // TODO: alert update error
             }
         })
     }
-    
     
     
     func setupButtons() {
@@ -355,11 +335,12 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+
         let cell = calendarJawn.dequeueReusableCell(withReuseIdentifier: "calendarDay", for: indexPath) as! CalendarCell
         let lastDayIndex = startingWeekdayIndexed + numDaysInMonth - 1
         cell.backgroundColor = (startingWeekdayIndexed ... lastDayIndex).contains(indexPath.row) ? UIColor(rgb: 0xe7e7e7) : UIColor(rgb: 0xf0f0f0)
         guard let day = self.monthData[indexPath.row-(startingWeekdayIndexed-1)] else { return cell }
-        
         cell.backgroundColor = day.color()
         cell.log = day
         return cell
@@ -378,20 +359,20 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         let nextDay = "\(currCal.component(.year, from: currDate))" + "-" + "\(currCal.component(.month, from: currDate))" + "-" + "\(indexPath.row-(startingWeekdayIndexed-2))"
         
         let m = currCal.component(.month, from: currDate)
-
         
-        if((indexPath.row-(startingWeekdayIndexed-1) > currCal.component(.day, from: currDate)) && currCal.component(.month, from: currMonth) == m) {
-            
-            print ("date out of range")
+        if(currCal.component(.month, from: currMonth) > currCal.component(.month, from: currDate)) {
+            print("cannot click in future months")
             return
         }
         
-        print(indexPath.row)
-        print((indexPath.row-(startingWeekdayIndexed-1)))
-        print((indexPath.row-(startingWeekdayIndexed)))
+        if((indexPath.row-(startingWeekdayIndexed-1) > currCal.component(.day, from: currDate)) && currCal.component(.month, from: currMonth) == m) {
+            
+            print ("this date is out of range")
+            return
+        }
         
         if((indexPath.row-(startingWeekdayIndexed))<0) {
-            print("heller")
+            print("also out of range")
             return
         }
 
@@ -401,9 +382,12 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         do{
         
         fetchCurrLocation()
+            
 
          tempPostal = (self.monthData[indexPath.row-(startingWeekdayIndexed-1)]?.moods[0].zipCode)!
-        print("the postal is " + "\(tempPostal)")
+            
+            
+            print("the postal is " + "\(monthData[indexPath.row-(startingWeekdayIndexed-1)]?.moods[0].zipCode)")
             
             let url = URL(string: "https://api.weatherbit.io/v2.0/history/daily?postal_code=" + "\(tempPostal)" + "&country=US&start_date=" + "\(selectedDate)" + "&end_date=" + "\(nextDay)" + "&units=I&key=0d89f91dbfe44f9591d38429d21110e3")
             
@@ -422,7 +406,6 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         let maxTempValue = "High Temp: " + "\(data![0].max_temp!)" + "°"
         let minTempValue = "Low Temp: " + "\(data![0].min_temp!)" + "°"
 
-//
         let storyboard = UIStoryboard(name: "DayView", bundle: nil)
         
         let vc = storyboard.instantiateViewController(withIdentifier: "dayview") as! DayViewController
