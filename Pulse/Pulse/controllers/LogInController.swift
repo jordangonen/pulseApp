@@ -2,8 +2,8 @@
 //  LogInController.swift
 //  Pulse
 //
-//  Created by Reilly Freret on 11/8/18.
-//  Copyright © 2018 Reilly Freret. All rights reserved.
+//  Created by Pulse Team on 11/8/18.
+//  Copyright © 2018 Pulse Team. All rights reserved.
 //
 
 import Foundation
@@ -29,7 +29,8 @@ class LogInController: UIViewController {
         passwordOutlet.resignFirstResponder()
         loginButton(self)
     }
-    
+    // login button code, basically takes auth sign in details and communicates with firebase to try and log the user in. if the login
+    // is a success, then the user will be logged in and the loggedin storyboard will be presented, if not, an error is thrown.
     @IBAction func loginButton(_ sender: Any) {
         self.view.screenLoading()
         Auth.auth().signIn(withEmail: emailOutlet.text!, password: passwordOutlet.text!) { (authResult, error) in

@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+// weather model , stores information from the api
 class Weather: Decodable {
     
     var max_temp: Double!
