@@ -376,11 +376,11 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
 
-        if (monthData[indexPath.row-(startingWeekdayIndexed)]?.moods.count)! < 1 {
-            print("empty day")
-            return
-        }
-        
+//        if (monthData[indexPath.row-(startingWeekdayIndexed)]?.moods.count)! < 1 {
+//            print("empty day")
+//            return
+//        }
+//        
             
             
         
