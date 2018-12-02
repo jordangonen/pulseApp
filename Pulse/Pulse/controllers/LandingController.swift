@@ -27,8 +27,8 @@ class LandingController: UIViewController {
     }
     
     func checkLoggedIn() {
-        if let u = Auth.auth().currentUser {
-            print("\n\n\(u.email)\n")
+        if Auth.auth().currentUser != nil {
+            //print("\n\n\(u.email)\n")
         } else {
             print("\nno such luck")
         }

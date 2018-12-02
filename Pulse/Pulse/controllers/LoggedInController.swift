@@ -420,12 +420,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         
         fetchCurrLocation()
             
-            print("this is" + "\(self.monthData[indexPath.row-(startingWeekdayIndexed-1)]?.moods.count)")
-
-
          tempPostal = (self.monthData[indexPath.row-(startingWeekdayIndexed-1)]?.moods[0].zipCode)!
-            
-            print("the postal is " + "\(monthData[indexPath.row-(startingWeekdayIndexed-1)]?.moods[0].zipCode)")
             
             let url = URL(string: "https://api.weatherbit.io/v2.0/history/daily?postal_code=" + "\(tempPostal)" + "&country=US&start_date=" + "\(selectedDate)" + "&end_date=" + "\(nextDay)" + "&units=I&key=0d89f91dbfe44f9591d38429d21110e3")
             

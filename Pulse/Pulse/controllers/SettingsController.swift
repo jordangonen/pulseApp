@@ -40,11 +40,11 @@ class SettingsController: UIViewController {
     }
     @IBAction func resetPassword(_ sender: Any) {
         
-        var user = Auth.auth().currentUser;
-        var name: String;
+        let user = Auth.auth().currentUser;
+        var _: String;
         var email: String;
         email = (user?.email)!;
-        var name2: String;
+        var _: String;
 
         
 

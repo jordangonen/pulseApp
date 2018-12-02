@@ -100,7 +100,6 @@ struct User: Codable {
                     } else {
                         completion(-1)
                         print("couldn't find documents somehow?")
-                        print(error)
                     }
                 }
             }

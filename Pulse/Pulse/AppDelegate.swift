@@ -36,13 +36,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         db.settings = settings
         
         // debugging (true = force login, false = normal operation)
-        if false {
-            do {
-                try Auth.auth().signOut()
-            } catch let signOutError as NSError {
-                print ("Error signing out: %@", signOutError)
-            }
-        }
+//        if false {
+//            do {
+//                try Auth.auth().signOut()
+//            } catch let signOutError as NSError {
+//                print ("Error signing out: %@", signOutError)
+//            }
+//        }
         //
         
         if Auth.auth().currentUser != nil {

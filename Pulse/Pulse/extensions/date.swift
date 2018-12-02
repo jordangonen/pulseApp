@@ -22,8 +22,8 @@ extension Date {
         let dateString = Calendar.current.dateComponents(components, from: self)
         let diffs = Calendar.current.dateComponents(components, from: self, to: date)
         var message = "Unsure"
-        guard let years = diffs.year, let months = diffs.month, let days = diffs.day, let hours = diffs.hour, let minutes = diffs.minute, let seconds = diffs.second else { return message }
-        guard let dateHour = dateString.hour, let dateMinute = dateString.minute else { return message }
+        guard let years = diffs.year, let months = diffs.month, let days = diffs.day, let hours = diffs.hour, let minutes = diffs.minute, let _ = diffs.second else { return message }
+        guard let _ = dateString.hour, let _ = dateString.minute else { return message }
         if years > 0 {
             message = "Over a year ago"
         } else if months > 0 {
