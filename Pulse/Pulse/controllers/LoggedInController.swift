@@ -366,7 +366,6 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
         if((indexPath.row-(startingWeekdayIndexed-1) > currCal.component(.day, from: currDate)) && currCal.component(.month, from: currMonth) == m) {
-            
             print ("this date is out of range")
             return
         }
@@ -375,8 +374,23 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
             print("also out of range")
             return
         }
+        
 
-     
+        if (monthData[indexPath.row-(startingWeekdayIndexed)]?.moods.count)! < 1 {
+            print("empty day")
+            return
+        }
+        
+            
+            
+        
+//        if(((monthData[indexPath.row - (startingWeekdayIndexed)]?.moods[0].dateTime)! == "" )) {
+//            print("empty day")
+//            return
+//        }
+
+    
+            
         else {
 
         do{
