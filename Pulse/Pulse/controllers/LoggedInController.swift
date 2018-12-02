@@ -362,11 +362,20 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         
         if(currCal.component(.month, from: currMonth) > currCal.component(.month, from: currDate)) {
             print("cannot click in future months")
+//            print("this is" + "\(self.monthData[indexPath.row-(startingWeekdayIndexed-1)]?.moods.count)")
+
             return
         }
         
+        if (self.monthData[indexPath.row-(startingWeekdayIndexed-1)]?.moods.count) == nil {
+            print("this is nil")
+            return
+        }
+        
+        
         if((indexPath.row-(startingWeekdayIndexed-1) > currCal.component(.day, from: currDate)) && currCal.component(.month, from: currMonth) == m) {
             print ("this date is out of range")
+            
             return
         }
         
@@ -376,30 +385,30 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
 
-//        if (monthData[indexPath.row-(startingWeekdayIndexed)]?.moods.count)! < 1 {
+//        if (self.monthData[indexPath.row-(startingWeekdayIndexed)]?.moods.count)! == 0 {
 //            print("empty day")
 //            return
 //        }
-//        
             
-            
-        
-//        if(((monthData[indexPath.row - (startingWeekdayIndexed)]?.moods[0].dateTime)! == "" )) {
-//            print("empty day")
+//        if((indexPath.row-(startingWeekdayIndexed-1)) < currCal.component(.day, from: currDate) && ((monthData[indexPath.row-(startingWeekdayIndexed-1)]?.moods.count)! < 1)){
+//            print("does this work")
 //            return
 //        }
 
-    
-            
+
+        
+
+
         else {
 
         do{
         
         fetchCurrLocation()
             
+            print("this is" + "\(self.monthData[indexPath.row-(startingWeekdayIndexed-1)]?.moods.count)")
+
 
          tempPostal = (self.monthData[indexPath.row-(startingWeekdayIndexed-1)]?.moods[0].zipCode)!
-            
             
             print("the postal is " + "\(monthData[indexPath.row-(startingWeekdayIndexed-1)]?.moods[0].zipCode)")
             
