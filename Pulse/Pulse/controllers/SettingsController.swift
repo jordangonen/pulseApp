@@ -28,6 +28,10 @@ class SettingsController: UIViewController {
                 UIView.transition(with: ((UIApplication.shared.delegate?.window)!)!, duration: 0.5, options: .transitionFlipFromLeft, animations: {
                     ((UIApplication.shared.delegate?.window)!)!.rootViewController = v
                 }, completion: nil)
+                User.firstName = nil
+                User.lastName = nil
+                User.totalLogs = nil
+                User.lastLog = nil
             }
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)

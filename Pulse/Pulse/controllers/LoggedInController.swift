@@ -26,7 +26,8 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet var monthLabel: UILabel!
     @IBOutlet var totalLogs: UILabel!
     @IBOutlet var lastLogLabel: UILabel!
-    
+    //appDelegate for reminders
+    var appDelegate = UIApplication.shared.delegate as? AppDelegate
     
     let locationMgr = CLLocationManager()
 
@@ -180,6 +181,8 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         self.setupCellConstraints()
         calendarJawn.delegate = self
         calendarJawn.dataSource = self
+        reloadLabels()
+        startReminding()
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         // initialize periodic refreshes
         
@@ -197,6 +200,18 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         if !(isBeingPresented || isMovingToParentViewController) {
             self.populateLocalUser()
         }
+        startReminding()
+        self.reloadLabels()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "key"), object: nil, queue: .main) { (notification) in
+            print("recieved info as Oberserver")
+            self.reloadLabels()
+
+        }
+    }
+    
+    func startReminding(){
+        print("trying to start reminding")
+        appDelegate?.scheduleNotification()
     }
     
     // set the names for a user object if we need to
