@@ -13,20 +13,22 @@ class Mood: Codable {
     
     var value: Int!
     var dateTime: Date!
+    var zipCode: String!
     var year: String { return String(Calendar.current.component(.year, from: self.dateTime)) }
     var month: String { return String(Calendar.current.component(.month, from: self.dateTime)) }
     var day: Int { return Calendar.current.component(.day, from: self.dateTime) }
     
-    init(_ v: Int, _ d: Date) {
+    init(_ v: Int, _ d: Date, _ s: String) {
         self.value = v
         self.dateTime = d
+        self.zipCode = s
     }
     
     func upload(_ insertCompletion: @escaping (Bool) -> Void, _ updateCompletion: @escaping (Bool) -> Void) {
         // add date to appropriate month document
         let id = Auth.auth().currentUser!.uid
         let collectionPath = "users/\(id)/years/\(self.year)/months/\(self.month)/moods"
-        db.collection(collectionPath).addDocument(data: ["value": self.value, "dateTime": lround(self.dateTime.timeIntervalSince1970), "day": self.day]) { err in
+        db.collection(collectionPath).addDocument(data: ["value": self.value, "dateTime": lround(self.dateTime.timeIntervalSince1970), "day": self.day, "zipCode": self.zipCode]) { err in
             if err == nil {
                 insertCompletion(true)
                 
