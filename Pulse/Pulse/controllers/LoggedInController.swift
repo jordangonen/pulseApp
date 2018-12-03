@@ -39,6 +39,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
             presentLocationNotification()
             return
         } else if authStatus == .notDetermined {
+            setCode(postCode: "94105")
             print("\nlocation not determined")
             locationMgr.requestWhenInUseAuthorization()
             return
@@ -284,6 +285,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         // defines a mood passes in necessary aprams (value, date, zip)
         let m = Mood(sender.tag - 60, Date(), postal)
         self.view.screenLoading()
+        
         m.upload({ b in
             if !b {
                 // TODO: alert upload error
@@ -294,6 +296,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
                 let dayInt = self.currCal.component(.day, from: self.currDate)
                 let d = self.monthData[dayInt]
                 d?.moods.append(m)
+                print(self.monthData[dayInt]?.moods[0].zipCode)
      // no longer necessary snip
 //                if let d = self.monthData[dayInt] {
 //                    print("INHEREEEE")
@@ -384,9 +387,16 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         fetchCurrLocation()
         // gets the zip code for that specific day
          tempPostal = (self.monthData[indexPath.row-(startingWeekdayIndexed-1)]?.moods[0].zipCode)!
+         print(tempPostal)
+            // if could not find location, set it to default (default is San Francisco) this sometimes occurs on your first attempt
+            if tempPostal == "" {
+                print("it null")
+                tempPostal = "94108"
+            }
         // makes api call passing along the relevant dates and zip
             let url = URL(string: "https://api.weatherbit.io/v2.0/history/daily?postal_code=" + "\(tempPostal)" + "&country=US&start_date=" + "\(selectedDate)" + "&end_date=" + "\(nextDay)" + "&units=I&key=0d89f91dbfe44f9591d38429d21110e3")
             // stores results of the api call
+            print(url)
             let info = try Data(contentsOf: url!)
             self.weatherResults = try! JSONDecoder().decode(Weather.self, from: info)
         }
@@ -395,6 +405,10 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
         let data = weatherResults?.data
+        
+            
+        
+            
         // set max and min temps
         let maxTempValue = "High Temp: " + "\(data![0].max_temp!)" + "°"
         let minTempValue = "Low Temp: " + "\(data![0].min_temp!)" + "°"

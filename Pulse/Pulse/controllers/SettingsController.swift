@@ -32,6 +32,7 @@ class SettingsController: UIViewController {
                 //reset user variables to nil
                 User.firstName = nil
                 User.lastName = nil
+                User.zipCode = nil
                 User.totalLogs = nil
                 User.lastLog = nil
             }
