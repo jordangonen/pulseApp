@@ -2,8 +2,8 @@
 //  DayViewController.swift
 //  Pulse
 //
-//  Created by Nofal Zubair on 11/30/18.
-//  Copyright © 2018 Reilly Freret. All rights reserved.
+//  Created by Team Pulse on 11/30/18.
+//  Copyright © 2018 Team Pulse. All rights reserved.
 //
 
 import UIKit
@@ -11,23 +11,20 @@ import Foundation
 import Firebase
 
 class DayViewController: UIViewController, UIScrollViewDelegate, UITableViewDataSource{
-    
+    // DEFINE OUTLETS FOR DAY VIEW
     var backgroundColor: UIColor!
     @IBOutlet weak var viewer: UIView!
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
-    
     @IBOutlet var tableView: UITableView!
-    
     @IBOutlet var dayTitle: UINavigationItem!
     @IBOutlet var zipLabel: UILabel!
     
-    
+    // VARIABLES PASSED THROUGH
     var maxTemp: String!
     var minTemp: String!
     var zip: String! 
     var rows: Int!
-    
     var moodArr: [Mood] = []
     
 
@@ -36,23 +33,22 @@ class DayViewController: UIViewController, UIScrollViewDelegate, UITableViewData
     // everything called in viewdidload so it loads every time user pulls up the movie details
     override func viewDidLoad() {
         super.viewDidLoad()
+        // sets background color, text labels, and zip code (all passed in loggedInController)
         viewer.backgroundColor = backgroundColor
         maxTempLabel.text = maxTemp
         minTempLabel.text = minTemp
         zipLabel.text = "Zip Code: " + "\(zip!)"
 
         tableView.dataSource = self
-        
+        // sets the date on the title
         if moodArr.count > 0 {
             let date = moodArr[0].dateTime!
             let dateString = ("\(date)")
-            
-            
+            // basic date formatting
             let dateFormatterGet = DateFormatter()
             dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
             let dateFormatterPrint = DateFormatter()
             dateFormatterPrint.dateFormat = "MMM d"
-            
             if let date = dateFormatterGet.date(from: dateString) {
                 dayTitle.title = dateFormatterPrint.string(from: date)
                 print(dateFormatterPrint.string(from: date))
@@ -65,15 +61,14 @@ class DayViewController: UIViewController, UIScrollViewDelegate, UITableViewData
     }
     override func viewWillAppear(_ animated: Bool) {
 //        self.populateData()
-
     }
     
 
-    
+    // # of rows in section for table view is just length of the moodArr
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moodArr.count
     }
-    
+    // table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier")!
@@ -84,7 +79,7 @@ class DayViewController: UIViewController, UIScrollViewDelegate, UITableViewData
         
         
         let timeString = ("\(time)")
-        
+        // formatting date for the time a mood was logged
         
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
@@ -97,7 +92,7 @@ class DayViewController: UIViewController, UIScrollViewDelegate, UITableViewData
             print("There was an error decoding the string")
         }
         
-        
+        // filling list of previous moods
         switch val {
         case 0:
             cell.textLabel?.text = "☹️ recorded on: " + "\(cleanDate!)"
@@ -113,7 +108,7 @@ class DayViewController: UIViewController, UIScrollViewDelegate, UITableViewData
     }
     
     
-    
+    // back button takes you home 
     @IBAction func backButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }

@@ -2,8 +2,8 @@
 //  OnboardingProfileController.swift
 //  Pulse
 //
-//  Created by Reilly Freret on 11/9/18.
-//  Copyright © 2018 Reilly Freret. All rights reserved.
+//  Created by Pulse Team on 11/9/18.
+//  Copyright © 2018 Pulse Team. All rights reserved.
 //
 
 import Foundation

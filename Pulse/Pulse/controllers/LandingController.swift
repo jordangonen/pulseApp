@@ -13,7 +13,7 @@ import Firebase
 class LandingController: UIViewController {
     
     @IBOutlet var mainView: UIView!
-    
+    // sets the constraints / params for the landing
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLoggedIn()

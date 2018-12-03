@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class OnboardingController: UIViewController, UIScrollViewDelegate {
-    
+    // basic outlets
     var slides = [OnboardingSlide]()
     let colors: [UIColor] = [UIColor.white, UIColor.Pulse.green, UIColor.Pulse.red, UIColor.Pulse.green]
     
@@ -19,7 +19,7 @@ class OnboardingController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet var prevOutlet: UIButton!
     @IBOutlet var nextOutlet: UIButton!
-    
+    // populates on load
     override func viewDidLoad() {
         super.viewDidLoad()
         obScrollView.delegate = self
@@ -29,7 +29,7 @@ class OnboardingController: UIViewController, UIScrollViewDelegate {
         pageControl.currentPage = 0
         view.bringSubview(toFront: pageControl)
     }
-    
+    // instantiate scroll view and set constraints
     func setupScrollView() {
         obScrollView.contentSize.width = view.frame.width * CGFloat(slides.count)
         obScrollView.isPagingEnabled = true
@@ -78,14 +78,14 @@ class OnboardingController: UIViewController, UIScrollViewDelegate {
         pageControl.currentPageIndicatorTintColor = colors[pageIndex]
         pageControl.pageIndicatorTintColor = colors[pageIndex].withAlphaComponent(0.3)
     }
-    
+    // moves screens along
     func updateButtons(i: Int) {
         prevOutlet.setTitleColor(colors[i], for: .normal)
         nextOutlet.setTitleColor(colors[i], for: .normal)
         prevOutlet.setTitle(i == 0 ? "" : "< prev", for: .normal)
         nextOutlet.setTitle(i == slides.count - 1 ? "finish >" : "next >", for: .normal)
     }
-    
+    // moves backwards
     @IBAction func prevAction(_ sender: Any) {
         let pageIndex = Int(floor(obScrollView.contentOffset.x/view.frame.width))
         if pageIndex > 0 {
@@ -93,7 +93,7 @@ class OnboardingController: UIViewController, UIScrollViewDelegate {
             obScrollView.setContentOffset(CGPoint(x: newOffset, y: -20), animated: true)
         }
     }
-    
+    // moves forwards
     @IBAction func nextAction(_ sender: Any) {
         if nextOutlet.title(for: .normal) == "finish >" {
             let v = UINavigationController(rootViewController: UIStoryboard(name: "LoggedIn", bundle: nil).instantiateViewController(withIdentifier: "loggedIn"))
