@@ -196,7 +196,7 @@ class LoggedInController: UIViewController, UICollectionViewDelegate, UICollecti
     // necessary for signup flow (since onboarding profile form blocks data)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if !(isBeingPresented || isMovingToParentViewController) {
+        if !(isBeingPresented || isMovingToParent) {
             self.populateLocalUser()
         }
         startReminding()

@@ -52,7 +52,7 @@ class SettingsController: UIViewController {
         //creates allert
         let alert = UIAlertController(title: "Password Reset", message: "Check your email. A password reset link will be sent.", preferredStyle: .alert)
         //adds action to alert
-        alert.addAction(UIAlertAction(title: "Submit", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Submit", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
             Auth.auth().sendPasswordReset(withEmail: email);
             do {
                 try Auth.auth().signOut()

@@ -51,7 +51,7 @@ extension UIView {
             backgroundAnimation.backgroundColor = UIColor.Pulse.lightGreen
         })
         self.addSubview(loadingView)
-        self.bringSubview(toFront: loadingView)
+        self.bringSubviewToFront(loadingView)
     }
     
     /**
