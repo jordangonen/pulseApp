@@ -61,7 +61,6 @@ extension Date {
         return englishDateDiffToDate(date: d)
     }
     
-    
     func englishWeekday() -> String {
         let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
         return weekdays[Calendar.current.component(.weekday, from: self)]
@@ -70,7 +69,7 @@ extension Date {
     func hoursMinutes12h() -> String {
         let hour = Calendar.current.component(.hour, from: self)
         let minute = Calendar.current.component(.minute, from: self)
-        return "\(hour > 12 ? hour % 12 : hour):\(minute) \(hour > 12 ? "pm" : "am")"
+        return "\(hour > 12 ? hour % 12 : hour):\(minute == 0 ? "00" : String(minute)) \(hour > 12 ? "pm" : "am")"
     }
     
 }

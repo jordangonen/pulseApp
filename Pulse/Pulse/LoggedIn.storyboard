@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -63,6 +63,13 @@
                                     <constraint firstAttribute="height" constant="110" id="vMS-3j-Gm8"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check back later to log your mood again." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfL-pH-eP1" userLabel="checkLater">
+                                <rect key="frame" x="30" y="90.5" width="315" height="110"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75944876024039765" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oIs-VA-GWf" userLabel="mainCalendarView">
                                 <rect key="frame" x="30" y="210.5" width="315" height="300"/>
                                 <subviews>
@@ -155,17 +162,14 @@
                                     <constraint firstItem="1hE-WX-EhW" firstAttribute="top" secondItem="oIs-VA-GWf" secondAttribute="top" id="wpS-vM-zqG"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs4-3f-PRT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs4-3f-PRT">
                                 <rect key="frame" x="30" y="591" width="19" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/a" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2c-A3-pdA">
-                                <rect key="frame" x="322.5" y="604.5" width="22.5" height="20.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20.5" id="pzQ-VX-abk"/>
-                                </constraints>
+                                <rect key="frame" x="322.5" y="606" width="22.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -177,7 +181,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last log" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQW-wd-O5T">
-                                <rect key="frame" x="293.5" y="585.5" width="51.5" height="17"/>
+                                <rect key="frame" x="293.5" y="585" width="51.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -193,18 +197,20 @@
                                     <action selector="goSettings:" destination="vue-CX-U3Q" eventType="touchUpInside" id="jl0-mh-MAf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHm-nG-rR5">
-                                <rect key="frame" x="110" y="535" width="52" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Prev"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHm-nG-rR5">
+                                <rect key="frame" x="30" y="515.5" width="31" height="30"/>
+                                <state key="normal" title="Prev">
+                                    <color key="titleColor" red="0.21960784310000001" green="0.82745098039999998" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="prevButton:" destination="vue-CX-U3Q" eventType="touchUpInside" id="dML-e5-x7R"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5J-MF-QPJ">
-                                <rect key="frame" x="203" y="535" width="52" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5J-MF-QPJ">
+                                <rect key="frame" x="313" y="515.5" width="32" height="30"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="0.21960784310000001" green="0.82745098039999998" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="nextButton:" destination="vue-CX-U3Q" eventType="touchUpInside" id="WHo-31-OC8"/>
                                 </connections>
@@ -214,28 +220,37 @@
                         <constraints>
                             <constraint firstItem="qs4-3f-PRT" firstAttribute="leading" secondItem="Z8J-lQ-HyD" secondAttribute="leading" constant="30" id="1TZ-qX-dxN"/>
                             <constraint firstItem="Lbg-cL-zzZ" firstAttribute="leading" secondItem="Z8J-lQ-HyD" secondAttribute="leading" constant="30" id="215-DL-lV2"/>
+                            <constraint firstItem="X2c-A3-pdA" firstAttribute="firstBaseline" secondItem="Ye2-dv-whR" secondAttribute="firstBaseline" id="457-2V-HJG"/>
                             <constraint firstItem="Z8J-lQ-HyD" firstAttribute="trailing" secondItem="lTj-ts-3MW" secondAttribute="trailing" constant="30" id="6lN-Us-ELT"/>
+                            <constraint firstItem="Y5J-MF-QPJ" firstAttribute="top" secondItem="TlS-rY-6oL" secondAttribute="bottom" constant="5" id="6nv-0V-cxo"/>
                             <constraint firstItem="3oR-9d-ivh" firstAttribute="leading" secondItem="Z8J-lQ-HyD" secondAttribute="leading" constant="30" id="8sc-Ts-T7i"/>
+                            <constraint firstItem="Ye2-dv-whR" firstAttribute="firstBaseline" secondItem="qs4-3f-PRT" secondAttribute="firstBaseline" id="AYE-5k-bcK"/>
+                            <constraint firstItem="FfL-pH-eP1" firstAttribute="leading" secondItem="3oR-9d-ivh" secondAttribute="leading" id="HEV-DO-bja"/>
                             <constraint firstItem="Lbg-cL-zzZ" firstAttribute="top" secondItem="Z8J-lQ-HyD" secondAttribute="top" constant="40" id="Ha2-V7-Ogj"/>
+                            <constraint firstItem="FfL-pH-eP1" firstAttribute="bottom" secondItem="3oR-9d-ivh" secondAttribute="bottom" id="JT5-OM-j2I"/>
                             <constraint firstItem="oIs-VA-GWf" firstAttribute="leading" secondItem="Z8J-lQ-HyD" secondAttribute="leading" constant="30" id="KOA-Wc-mrM"/>
                             <constraint firstItem="3oR-9d-ivh" firstAttribute="centerX" secondItem="Z8J-lQ-HyD" secondAttribute="centerX" id="MOK-ZS-SqQ"/>
                             <constraint firstItem="Z8J-lQ-HyD" firstAttribute="trailing" secondItem="X2c-A3-pdA" secondAttribute="trailing" constant="30" id="O5D-jd-8yi"/>
-                            <constraint firstItem="qs4-3f-PRT" firstAttribute="bottom" secondItem="Ye2-dv-whR" secondAttribute="bottom" constant="4" id="O9Y-F9-hBS"/>
                             <constraint firstItem="Z8J-lQ-HyD" firstAttribute="bottom" secondItem="qs4-3f-PRT" secondAttribute="bottom" constant="40" id="PSP-0V-gpQ"/>
                             <constraint firstItem="Ye2-dv-whR" firstAttribute="leading" secondItem="qs4-3f-PRT" secondAttribute="trailing" constant="5" id="Thu-MI-4Dn"/>
+                            <constraint firstItem="FfL-pH-eP1" firstAttribute="trailing" secondItem="3oR-9d-ivh" secondAttribute="trailing" id="WHy-2B-tkS"/>
                             <constraint firstItem="lTj-ts-3MW" firstAttribute="top" secondItem="Z8J-lQ-HyD" secondAttribute="top" constant="15" id="WhJ-mU-qCf"/>
+                            <constraint firstItem="yHm-nG-rR5" firstAttribute="top" secondItem="TlS-rY-6oL" secondAttribute="bottom" constant="5" id="bzm-Bs-q8Y"/>
+                            <constraint firstItem="yHm-nG-rR5" firstAttribute="leading" secondItem="Z8J-lQ-HyD" secondAttribute="leading" constant="30" id="c3T-M3-uQU"/>
                             <constraint firstItem="3oR-9d-ivh" firstAttribute="top" secondItem="Lbg-cL-zzZ" secondAttribute="bottom" constant="10" id="fYz-zA-jEE"/>
                             <constraint firstItem="oIs-VA-GWf" firstAttribute="centerX" secondItem="Z8J-lQ-HyD" secondAttribute="centerX" id="fem-xZ-tl9"/>
+                            <constraint firstItem="Z8J-lQ-HyD" firstAttribute="trailing" secondItem="Y5J-MF-QPJ" secondAttribute="trailing" constant="30" id="h1P-uW-Zn2"/>
                             <constraint firstItem="oIs-VA-GWf" firstAttribute="top" secondItem="3oR-9d-ivh" secondAttribute="bottom" constant="10" id="hkl-k7-Jps"/>
-                            <constraint firstItem="Z8J-lQ-HyD" firstAttribute="bottom" secondItem="X2c-A3-pdA" secondAttribute="bottom" constant="42" id="p5t-oQ-knS"/>
                             <constraint firstItem="TQW-wd-O5T" firstAttribute="trailing" secondItem="X2c-A3-pdA" secondAttribute="trailing" id="ro3-3q-FM4"/>
-                            <constraint firstItem="X2c-A3-pdA" firstAttribute="top" secondItem="TQW-wd-O5T" secondAttribute="bottom" constant="2" id="zZg-Zy-TmJ"/>
+                            <constraint firstItem="X2c-A3-pdA" firstAttribute="top" secondItem="TQW-wd-O5T" secondAttribute="bottom" constant="4" id="zZg-Zy-TmJ"/>
+                            <constraint firstItem="FfL-pH-eP1" firstAttribute="top" secondItem="3oR-9d-ivh" secondAttribute="top" id="zqq-qb-mSN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Z8J-lQ-HyD"/>
                     </view>
                     <navigationItem key="navigationItem" id="LW4-IP-TtM"/>
                     <connections>
                         <outlet property="calendarJawn" destination="TlS-rY-6oL" id="nrx-gT-PIe"/>
+                        <outlet property="checkLater" destination="FfL-pH-eP1" id="PEh-md-mMx"/>
                         <outlet property="dayHeadingStack" destination="lhn-qY-VDx" id="9H9-RH-0Id"/>
                         <outlet property="emotionStackView" destination="3oR-9d-ivh" id="3aK-Bk-tak"/>
                         <outlet property="greetingLabel" destination="Lbg-cL-zzZ" id="gYN-uY-lMX"/>
@@ -243,6 +258,8 @@
                         <outlet property="lastLogLabel" destination="X2c-A3-pdA" id="Enk-Bu-GrG"/>
                         <outlet property="monthLabel" destination="1hE-WX-EhW" id="8ff-pn-j6O"/>
                         <outlet property="neutralButtonOutlet" destination="qkd-CO-zqt" id="jGT-Nm-BuA"/>
+                        <outlet property="nextMonthOutlet" destination="Y5J-MF-QPJ" id="RnY-VS-1uD"/>
+                        <outlet property="prevMonthOutlet" destination="yHm-nG-rR5" id="b6E-I0-FdA"/>
                         <outlet property="sadButtonOutlet" destination="zOP-23-1jD" id="fLi-Hm-XVX"/>
                         <outlet property="totalLogs" destination="qs4-3f-PRT" id="inf-40-F5M"/>
                     </connections>
@@ -253,9 +270,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="happy" width="79" height="79"/>
-        <image name="neutral" width="79" height="79"/>
-        <image name="sad" width="79" height="79"/>
-        <image name="settings" width="170" height="170"/>
+        <image name="happy" width="238" height="238"/>
+        <image name="neutral" width="238" height="238"/>
+        <image name="sad" width="238" height="238"/>
+        <image name="settings" width="512" height="512"/>
     </resources>
 </document>

@@ -15,7 +15,6 @@ struct User: Codable {
     static var lastName: String?
     static var lastLog: Date?
     static var totalLogs: Int?
-    static var zipCode: String?
     
     static var id: String? {
         return Auth.auth().currentUser?.uid
@@ -31,7 +30,7 @@ struct User: Codable {
      
      - Returns: [Int: LogDay]? to completion handler, where Int represents a day of a month and LogDay represents the related LogDay object
     */
-    static func moodsFromMonth(_ year: Int, _ month: Int, _ zipCode: String, _ completion: @escaping ([Int: LogDay]?) -> Void) {
+    static func moodsFromMonth(_ year: Int, _ month: Int, _ completion: @escaping ([Int: LogDay]?) -> Void) {
         guard let uid = self.id else { return }
         db.collection("users/\(uid)/years/\(year)/months/\(month)/moods").getDocuments() { (querySnapshot, err) in
             if let e = err {

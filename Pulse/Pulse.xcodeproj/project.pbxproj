@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1287013321B1C52300B361D2 /* weatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1287013221B1C52300B361D2 /* weatherData.swift */; };
-		1287013521B1C54700B361D2 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1287013421B1C54700B361D2 /* DayViewController.swift */; };
-		1287013721B1C58800B361D2 /* DayView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1287013621B1C58800B361D2 /* DayView.storyboard */; };
 		1357D21B70A13A6BD594980F /* Pods_Pulse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D028834D90E6B177767C9A /* Pods_Pulse.framework */; };
-		21684E8921B49CDB00B8C1CF /* emotions.png in Resources */ = {isa = PBXBuildFile; fileRef = 21684E8821B49CDB00B8C1CF /* emotions.png */; };
 		AF36FA3C2194ED020094E3CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF36FA3B2194ED020094E3CC /* AppDelegate.swift */; };
 		AF36FA412194ED020094E3CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF36FA3F2194ED020094E3CC /* Main.storyboard */; };
 		AF36FA432194ED050094E3CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF36FA422194ED050094E3CC /* Assets.xcassets */; };
@@ -40,7 +37,8 @@
 		AF726C70219BA06000A9D5FC /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF726C6F219BA06000A9D5FC /* Settings.storyboard */; };
 		AF726C72219BA40E00A9D5FC /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF726C71219BA40E00A9D5FC /* SettingsController.swift */; };
 		AF726C75219BA9DD00A9D5FC /* timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF726C74219BA9DD00A9D5FC /* timer.swift */; };
-		AF726C77219CDCE800A9D5FC /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF726C76219CDCE800A9D5FC /* DayView.swift */; };
+		AF7973FB21E5493A00CC36D9 /* LogDay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7973FA21E5493A00CC36D9 /* LogDay.storyboard */; };
+		AF7973FD21E54B7B00CC36D9 /* LogDayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7973FC21E54B7B00CC36D9 /* LogDayController.swift */; };
 		AFAA9BE02196C38B00DA3B24 /* collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA9BDF2196C38B00DA3B24 /* collection.swift */; };
 		AFAA9BE22197FA4100DA3B24 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA9BE12197FA4100DA3B24 /* Mood.swift */; };
 		AFAA9BE42197FD8600DA3B24 /* LogDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA9BE32197FD8600DA3B24 /* LogDay.swift */; };
@@ -61,9 +59,6 @@
 
 /* Begin PBXFileReference section */
 		1287013221B1C52300B361D2 /* weatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherData.swift; sourceTree = "<group>"; };
-		1287013421B1C54700B361D2 /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
-		1287013621B1C58800B361D2 /* DayView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DayView.storyboard; sourceTree = "<group>"; };
-		21684E8821B49CDB00B8C1CF /* emotions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emotions.png; sourceTree = "<group>"; };
 		28D028834D90E6B177767C9A /* Pods_Pulse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pulse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C94951F8C93A556A8464593 /* Pods-Pulse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pulse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pulse/Pods-Pulse.debug.xcconfig"; sourceTree = "<group>"; };
 		73882C485E0B358E2807A93B /* Pods-PulseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PulseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PulseTests/Pods-PulseTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -102,7 +97,8 @@
 		AF726C6F219BA06000A9D5FC /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		AF726C71219BA40E00A9D5FC /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		AF726C74219BA9DD00A9D5FC /* timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timer.swift; sourceTree = "<group>"; };
-		AF726C76219CDCE800A9D5FC /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		AF7973FA21E5493A00CC36D9 /* LogDay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogDay.storyboard; sourceTree = "<group>"; };
+		AF7973FC21E54B7B00CC36D9 /* LogDayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDayController.swift; sourceTree = "<group>"; };
 		AFAA9BDF2196C38B00DA3B24 /* collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collection.swift; sourceTree = "<group>"; };
 		AFAA9BE12197FA4100DA3B24 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 		AFAA9BE32197FD8600DA3B24 /* LogDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDay.swift; sourceTree = "<group>"; };
@@ -179,10 +175,9 @@
 				AF36FA5E2194F5630094E3CC /* views */,
 				AF36FA5D2194F55A0094E3CC /* models */,
 				AF36FA3B2194ED020094E3CC /* AppDelegate.swift */,
-				21684E8821B49CDB00B8C1CF /* emotions.png */,
 				AF36FA3F2194ED020094E3CC /* Main.storyboard */,
-				1287013621B1C58800B361D2 /* DayView.storyboard */,
 				AF3CD4B52196000700A00EDA /* OnboardingTest.storyboard */,
+				AF7973FA21E5493A00CC36D9 /* LogDay.storyboard */,
 				AF3CD4BF21961B6800A00EDA /* LoggedIn.storyboard */,
 				AF726C6F219BA06000A9D5FC /* Settings.storyboard */,
 				AF36FA422194ED050094E3CC /* Assets.xcassets */,
@@ -220,7 +215,6 @@
 			children = (
 				AF4D572F21954850005D5F38 /* OnboardingSlide.swift */,
 				AFAA9BE72198082600DA3B24 /* CalendarCell.swift */,
-				AF726C76219CDCE800A9D5FC /* DayView.swift */,
 				AF4D572D2195464D005D5F38 /* OnboardingPage.xib */,
 			);
 			path = views;
@@ -235,7 +229,7 @@
 				AF3CD4B72196057800A00EDA /* OnboardingProfileController.swift */,
 				AF36FA672194FD5C0094E3CC /* LogInController.swift */,
 				AF3CD4C121961BA800A00EDA /* LoggedInController.swift */,
-				1287013421B1C54700B361D2 /* DayViewController.swift */,
+				AF7973FC21E54B7B00CC36D9 /* LogDayController.swift */,
 				AF726C71219BA40E00A9D5FC /* SettingsController.swift */,
 				AF3CD4B32195F38200A00EDA /* LandingController.swift */,
 			);
@@ -349,15 +343,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF36FA462194ED050094E3CC /* LaunchScreen.storyboard in Resources */,
-				1287013721B1C58800B361D2 /* DayView.storyboard in Resources */,
 				AF3CD4B62196000700A00EDA /* OnboardingTest.storyboard in Resources */,
 				AF3CD4C021961B6800A00EDA /* LoggedIn.storyboard in Resources */,
 				AF726C70219BA06000A9D5FC /* Settings.storyboard in Resources */,
 				AF4D572E2195464D005D5F38 /* OnboardingPage.xib in Resources */,
 				AF36FA5C2194ED6E0094E3CC /* GoogleService-Info.plist in Resources */,
-				21684E8921B49CDB00B8C1CF /* emotions.png in Resources */,
 				AF36FA432194ED050094E3CC /* Assets.xcassets in Resources */,
 				AF36FA412194ED020094E3CC /* Main.storyboard in Resources */,
+				AF7973FB21E5493A00CC36D9 /* LogDay.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,13 +448,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF3CD4B82196057800A00EDA /* OnboardingProfileController.swift in Sources */,
-				AF726C77219CDCE800A9D5FC /* DayView.swift in Sources */,
 				AFAA9BE82198082600DA3B24 /* CalendarCell.swift in Sources */,
 				AF3CD4C4219652BC00A00EDA /* Messages.swift in Sources */,
 				AF36FA662194FD440094E3CC /* SignUpController.swift in Sources */,
 				AF36FA682194FD5C0094E3CC /* LogInController.swift in Sources */,
 				1287013321B1C52300B361D2 /* weatherData.swift in Sources */,
 				AFAA9BE42197FD8600DA3B24 /* LogDay.swift in Sources */,
+				AF7973FD21E54B7B00CC36D9 /* LogDayController.swift in Sources */,
 				AF4D572221952281005D5F38 /* uiview.swift in Sources */,
 				AF726C6D219B95ED00A9D5FC /* date.swift in Sources */,
 				AF726C6B219A33C100A9D5FC /* operations.swift in Sources */,
@@ -471,7 +464,6 @@
 				AFAA9BE62197FDDA00DA3B24 /* Weather.swift in Sources */,
 				AF3CD4BE2196176E00A00EDA /* User.swift in Sources */,
 				AF36FA642194FACD0094E3CC /* color.swift in Sources */,
-				1287013521B1C54700B361D2 /* DayViewController.swift in Sources */,
 				AF726C75219BA9DD00A9D5FC /* timer.swift in Sources */,
 				AFAA9BE22197FA4100DA3B24 /* Mood.swift in Sources */,
 				AF36FA3C2194ED020094E3CC /* AppDelegate.swift in Sources */,

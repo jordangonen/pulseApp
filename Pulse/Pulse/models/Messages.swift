@@ -12,7 +12,13 @@ import Firebase
 class Messages {
     
     //Welcome messaage changees based on the current time
-    static func getWelcome() -> String {
+    static func getWelcome(_ needsThanks: Bool = false) -> String {
+        
+        if needsThanks {
+            guard let name = User.firstName else { return "Thanks for your input!" }
+            return "Thanks for your input, \(name)!"
+        }
+        
         //time stuff
         var tod = String()
         switch Calendar.current.component(.hour, from: Date()) {
@@ -30,7 +36,10 @@ class Messages {
         // return actual
         let m = User.firstName != nil ? ", " + User.firstName! : ""
         return "Good \(tod)\(m). How are you feeling?"
+        
     }
+    
+    
     
     //Pulls time of last log in order to print it on the loggedIn View
     static func getLastLog(_ completion: @escaping (String) -> Void) {
